@@ -449,6 +449,80 @@
             .section {
                 padding: 20px;
             }
+
+            .definitions-table,
+            .useful-info-table,
+            .schedule-table,
+            .legislation-table {
+                display: block;
+                width: 100%;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .definitions-table thead,
+            .useful-info-table thead,
+            .schedule-table thead,
+            .legislation-table thead {
+                display: none;
+            }
+
+            .definitions-table tr,
+            .useful-info-table tr,
+            .schedule-table tr {
+                display: block;
+                margin-bottom: 16px;
+                border-bottom: 1px solid #e9ecef;
+            }
+
+            .definitions-table td,
+            .useful-info-table td,
+            .schedule-table td {
+                display: block;
+                width: 100%;
+                padding: 10px 12px;
+            }
+
+            .definitions-table td::before,
+            .useful-info-table td::before,
+            .schedule-table td::before {
+                content: attr(data-label);
+                display: block;
+                font-weight: 700;
+                color: #1e3c72;
+                margin-bottom: 4px;
+            }
+
+            /* Compact program layout on mobile */
+            .schedule-table {
+                display: table;
+                width: 100%;
+                overflow: visible;
+            }
+
+            .schedule-table thead {
+                display: none;
+            }
+
+            .schedule-table tr {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 12px;
+                padding: 10px 6px;
+                margin-bottom: 6px;
+                border-bottom: 1px solid #e9ecef;
+            }
+
+            .schedule-table td {
+                display: inline-block;
+                width: auto;
+                padding: 0;
+            }
+
+            .schedule-table td::before {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -624,17 +698,17 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>ghișee unice de eficiență energetică</td>
-                        <td>se înființează în scopul oferirii serviciilor de informare și consiliere tehnică în domeniul
+                        <td data-label="Termen">ghișee unice de eficiență energetică</td>
+                        <td data-label="Definiție">se înființează în scopul oferirii serviciilor de informare și consiliere tehnică în domeniul
                             eficienței energetice în clădiri și al utilizării surselor regenerabile de energie pentru
                             consumatori și prosumatori, către persoane fizice și juridice, inclusiv comunități de energie,
                             potențiali beneficiari ai investițiilor, în privința programelor de investiții finanțate din
                             fonduri europene, din bugetul de stat, precum și alte surse legal constituite</td>
-                        <td>O.U.G. nr. 92/2024</td>
+                        <td data-label="Sursă">O.U.G. nr. 92/2024</td>
                     </tr>
                     <tr>
-                        <td>prosumator</td>
-                        <td>clientul final care își desfășoară activitățile în spațiul propriu deținut cu orice titlu,
+                        <td data-label="Termen">prosumator</td>
+                        <td data-label="Definiție">clientul final care își desfășoară activitățile în spațiul propriu deținut cu orice titlu,
                             aferent unui punct de delimitare cu rețeaua electrică, precizat prin certificatul de racordare
                             și care produce energie electrică din surse regenerabile pentru propriul consum, a cărui
                             activitate specifică nu este producerea energiei electrice, care consumă și care poate stoca
@@ -646,81 +720,81 @@
                             racordate la rețeaua electrică a distribuitorului la care este racordat prosumatorul, cu condiția
                             ca, în cazul consumatorilor autonomi necasnici de energie, aceste activități să nu constituie
                             activitatea lor comercială sau profesională primară</td>
-                        <td>Legea nr. 123/2012 (art. 3 pct. 95)</td>
+                        <td data-label="Sursă">Legea nr. 123/2012 (art. 3 pct. 95)</td>
                     </tr>
                     <tr>
-                        <td>consumator vulnerabil</td>
-                        <td>persoană singură/familie, client final aparținând unei categorii de clienți casnici care, din
+                        <td data-label="Termen">consumator vulnerabil</td>
+                        <td data-label="Definiție">persoană singură/familie, client final aparținând unei categorii de clienți casnici care, din
                             motive de sănătate, handicap, vârstă, venituri insuficiente sau izolare față de sursele de energie,
                             se află în risc de marginalizare socială și care, pentru prevenirea acestui risc, beneficiază de
                             măsuri de protecție socială, inclusiv de natură financiară, și servicii suplimentare pentru a-și
                             asigura cel puțin nevoile energetice minimale. Măsurile de protecție socială, precum și criteriile
                             de eligibilitate pentru acestea se stabilesc prin acte normative</td>
-                        <td>Legea nr. 123/2012 (art. 3 pct. 95)</td>
+                        <td data-label="Sursă">Legea nr. 123/2012 (art. 3 pct. 95)</td>
                     </tr>
                     <tr>
-                        <td>audit energetic al clădirii</td>
-                        <td>totalitatea activităților specifice prin care se obțin date și elemente tehnice despre profilul
+                        <td data-label="Termen">audit energetic al clădirii</td>
+                        <td data-label="Definiție">totalitatea activităților specifice prin care se obțin date și elemente tehnice despre profilul
                             consumului energetic al unei clădiri/unități de clădire existente, urmate de identificarea
                             soluțiilor de creștere a performanței energetice, de cuantificarea modificărilor consumurilor
                             energetice rezultate din soluțiile propuse, de evaluarea eficienței economice a implementării
                             acestora prin indicatori economici și finalizate cu raportul de audit, potrivit metodologiei de
                             calcul al performanței energetice a clădirilor</td>
-                        <td>Legea nr. 372/2005 (art. 3 pct. 21)</td>
+                        <td data-label="Sursă">Legea nr. 372/2005 (art. 3 pct. 21)</td>
                     </tr>
                     <tr>
-                        <td>auditor energetic pentru clădiri</td>
-                        <td>persoană fizică atestată de Ministerul Lucrărilor Publice, Dezvoltării și Administrației, în
+                        <td data-label="Termen">auditor energetic pentru clădiri</td>
+                        <td data-label="Definiție">persoană fizică atestată de Ministerul Lucrărilor Publice, Dezvoltării și Administrației, în
                             conformitate cu prevederile legale în vigoare, care are dreptul să elaboreze rapoarte de audit
                             energetic și/sau certificate de performanță energetică pentru clădiri/unități de clădire, în
                             conformitate cu metodologia specifică adoptată la nivel național aprobată prin ordin al ministrului
                             lucrărilor publice, dezvoltării și administrației. Auditorul energetic pentru clădiri este
                             specialistul care își desfășoară activitatea ca persoană fizică autorizată sau ca angajat al unor
                             persoane juridice, conform prevederilor legale în vigoare</td>
-                        <td>Legea nr. 372/2005 (art. 3 pct. 23)</td>
+                        <td data-label="Sursă">Legea nr. 372/2005 (art. 3 pct. 23)</td>
                     </tr>
                     <tr>
-                        <td>expert tehnic atestat</td>
-                        <td>specialist, persoană fizică, atestat de Ministerul Lucrărilor Publice, Dezvoltării și Administrației
+                        <td data-label="Termen">expert tehnic atestat</td>
+                        <td data-label="Definiție">specialist, persoană fizică, atestat de Ministerul Lucrărilor Publice, Dezvoltării și Administrației
                             potrivit prevederilor Legii nr. 10/1995 privind calitatea în construcții, republicată, cu
                             modificările și completările ulterioare, pentru specialitățile instalații de încălzire, instalații
                             de ventilare, instalații de climatizare și condiționare a aerului. Expertul tehnic atestat este
                             specialistul care are dreptul să realizeze inspecții, din punctul de vedere al eficienței energetice,
                             ale sistemelor de încălzire, de climatizare și de ventilare și să întocmească rapoarte de inspecție
                             pentru acestea</td>
-                        <td>Legea nr. 372/2005 (art. 3 pct. 24)</td>
+                        <td data-label="Sursă">Legea nr. 372/2005 (art. 3 pct. 24)</td>
                     </tr>
                     <tr>
-                        <td>renovare aprofundată</td>
-                        <td>renovare care conduce la îmbunătățirea cu peste 60% a performanței energetice a unei clădiri,
+                        <td data-label="Termen">renovare aprofundată</td>
+                        <td data-label="Definiție">renovare care conduce la îmbunătățirea cu peste 60% a performanței energetice a unei clădiri,
                             estimată prin calcul potrivit metodologiei de calcul al performanței energetice a clădirilor în
                             raport cu starea actuală și utilizarea în condiții normate a clădirii</td>
-                        <td>Legea nr. 372/2005 (art. 3 pct. 37)</td>
+                        <td data-label="Sursă">Legea nr. 372/2005 (art. 3 pct. 37)</td>
                     </tr>
                     <tr>
-                        <td>renovare majoră</td>
-                        <td>lucrările proiectate și efectuate la anvelopa clădirii și/sau la sistemele tehnice ale acesteia,
+                        <td data-label="Termen">renovare majoră</td>
+                        <td data-label="Definiție">lucrările proiectate și efectuate la anvelopa clădirii și/sau la sistemele tehnice ale acesteia,
                             ale căror costuri depășesc 25% din valoarea de impozitare a clădirii, exclusiv valoarea terenului
                             pe care este situată clădirea. Valoarea de impozitare a clădirii se determină potrivit Legii
                             nr. 227/2015 privind Codul fiscal, cu modificările și completările ulterioare</td>
-                        <td>Legea nr. 372/2005 (art. 3 pct. 9)</td>
+                        <td data-label="Sursă">Legea nr. 372/2005 (art. 3 pct. 9)</td>
                     </tr>
                     <tr>
-                        <td>certificat de performanță energetică a clădirii</td>
-                        <td>document elaborat conform metodologiei de calcul al performanței energetice a clădirilor, prin care
+                        <td data-label="Termen">certificat de performanță energetică a clădirii</td>
+                        <td data-label="Definiție">document elaborat conform metodologiei de calcul al performanței energetice a clădirilor, prin care
                             este indicată performanța energetică a unei clădiri sau a unei unități de clădire și care cuprinde
                             date cu privire la consumurile calculate de energie primară și finală, inclusiv din surse regenerabile,
                             precum și cantitatea de emisii echivalent CO_2. Pentru clădirile existente, certificatul cuprinde și
                             măsuri recomandate pentru reducerea consumurilor de energie, precum și pentru creșterea ponderii
                             utilizării surselor regenerabile de energie în consumul total</td>
-                        <td>Legea nr. 372/2005 (art. 3 pct. 3)</td>
+                        <td data-label="Sursă">Legea nr. 372/2005 (art. 3 pct. 3)</td>
                     </tr>
                     <tr>
-                        <td>performanța energetică a clădirii</td>
-                        <td>energia calculată conform metodologiei de calcul al performanței energetice a clădirilor pentru a
+                        <td data-label="Termen">performanța energetică a clădirii</td>
+                        <td data-label="Definiție">energia calculată conform metodologiei de calcul al performanței energetice a clădirilor pentru a
                             răspunde necesităților legate de utilizarea în condiții normate, necesități care includ în principal:
                             încălzirea, prepararea apei calde menajere, răcirea, ventilarea și iluminatul</td>
-                        <td>Legea nr. 372/2005 (art. 3 pct. 2)</td>
+                        <td data-label="Sursă">Legea nr. 372/2005 (art. 3 pct. 2)</td>
                     </tr>
                 </tbody>
             </table>
@@ -742,52 +816,52 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>
+                        <td data-label="Resursă">
                             Registre auditori energetici pentru clădiri, verificatori de proiecte, experți tehnici în construcții
                             <div style="color:#999; margin-top:6px;">site oficial M.D.L.P.A.</div>
                         </td>
-                        <td>
+                        <td data-label="Link">
                             <a href="https://www.mdlpa.ro/pages/registrepublice" target="_blank" class="contact-link">
                                 link registre publice M.D.L.P.A.
                             </a>
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td data-label="Resursă">
                             Performanța energetică a clădirilor
                             <div style="color:#999; margin-top:6px;">site oficial M.D.L.P.A.</div>
                         </td>
-                        <td>
+                        <td data-label="Link">
                             <a href="https://www.mdlpa.ro/pages/eficientaenergetica" target="_blank" class="contact-link">
                                 https://www.mdlpa.ro/pages/eficientaenergetica
                             </a>
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td data-label="Resursă">
                             Prosumatori
                             <div style="color:#999; margin-top:6px;">site oficial ANRE</div>
                         </td>
-                        <td>
+                        <td data-label="Link">
                             <a href="https://anre.ro/consumatori/consumatori-legislatie/" target="_blank" class="contact-link">
                                 https://anre.ro/consumatori/consumatori-legislatie/
                             </a>
                         </td>
                     </tr>
                     <tr>
-                        <td>GHIDUL PROSUMATORULUI</td>
-                        <td>
+                        <td data-label="Resursă">GHIDUL PROSUMATORULUI</td>
+                        <td data-label="Link">
                             <a href="https://anre.ro/wp-content/uploads/2023/07/Ghidul_prosumatorului_actualizare_23.03.2023.pdf" target="_blank" class="contact-link">
                                 vizualizare document
                             </a>
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td data-label="Resursă">
                             ETAPELE PROCESULUI DE RACORDARE LA REȚEAUA ELECTRICĂ DE INTERES PUBLIC a locurilor de consum și de
                             producere aparținând prosumatorilor, conform prevederilor ORDINULUI Președintelui A.N.R.E. nr. 19/2022
                         </td>
-                        <td>
+                        <td data-label="Link">
                             <ul class="links-list">
                                 <li>
                                     pentru: situația în care nu se realizează lucrări suplimentare sau modificări ale instalațiilor
@@ -890,80 +964,80 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>LEGE nr. 123 din 10 iulie 2012 - a energiei electrice și a gazelor naturale, cu completările și modificările ulterioare</td>
-                        <td><a href="https://legislatie.just.ro/Public/DetaliiDocument/139677" target="_blank" class="contact-link">vizualizare document</a></td>
+                        <td data-label="Denumire act normativ">LEGE nr. 123 din 10 iulie 2012 - a energiei electrice și a gazelor naturale, cu completările și modificările ulterioare</td>
+                        <td data-label="Link"><a href="https://legislatie.just.ro/Public/DetaliiDocument/139677" target="_blank" class="contact-link">vizualizare document</a></td>
                     </tr>
                     <tr>
-                        <td>ORDINUL PREȘEDINTELUI ANRE nr. 95 din 29 iunie 2022 - privind modificarea și completarea Ordinului președintelui ANRE nr. 15/2022 pentru aprobarea Metodologiei de stabilire a regulilor de comercializare a energiei electrice produse în centrale electrice din surse regenerabile cu putere electrică instalată de cel mult 400 kW pe loc de consum aparținând prosumatorilor</td>
-                        <td><a href="https://legislatie.just.ro/Public/DetaliiDocument/256956" target="_blank" class="contact-link">vizualizare document</a></td>
+                        <td data-label="Denumire act normativ">ORDINUL PREȘEDINTELUI ANRE nr. 95 din 29 iunie 2022 - privind modificarea și completarea Ordinului președintelui ANRE nr. 15/2022 pentru aprobarea Metodologiei de stabilire a regulilor de comercializare a energiei electrice produse în centrale electrice din surse regenerabile cu putere electrică instalată de cel mult 400 kW pe loc de consum aparținând prosumatorilor</td>
+                        <td data-label="Link"><a href="https://legislatie.just.ro/Public/DetaliiDocument/256956" target="_blank" class="contact-link">vizualizare document</a></td>
                     </tr>
                     <tr>
-                        <td>ORDINUL PREȘEDINTELUI ANRE nr. 94 din 29 iunie 2022 - pentru modificarea unor ordine ale președintelui ANRE din domeniul promovării energiei electrice din surse regenerabile de energie (Modifică Ordinul 179/2018, Ordinul 15/2022 și Ordinul 77/2017)</td>
-                        <td><a href="https://legislatie.just.ro/Public/DetaliiDocument/256904" target="_blank" class="contact-link">vizualizare document</a></td>
+                        <td data-label="Denumire act normativ">ORDINUL PREȘEDINTELUI ANRE nr. 94 din 29 iunie 2022 - pentru modificarea unor ordine ale președintelui ANRE din domeniul promovării energiei electrice din surse regenerabile de energie (Modifică Ordinul 179/2018, Ordinul 15/2022 și Ordinul 77/2017)</td>
+                        <td data-label="Link"><a href="https://legislatie.just.ro/Public/DetaliiDocument/256904" target="_blank" class="contact-link">vizualizare document</a></td>
                     </tr>
                     <tr>
-                        <td>ORDINUL PREȘEDINTELUI ANRE nr. 19 din 02 martie 2022 - pentru aprobarea Procedurii privind racordarea la rețelele electrice de interes public a locurilor de consum și de producere aparținând prosumatorilor (Abrogă Ordinul 15/2021)</td>
-                        <td><a href="https://legislatie.just.ro/Public/DetaliiDocument/252409" target="_blank" class="contact-link">vizualizare document</a></td>
+                        <td data-label="Denumire act normativ">ORDINUL PREȘEDINTELUI ANRE nr. 19 din 02 martie 2022 - pentru aprobarea Procedurii privind racordarea la rețelele electrice de interes public a locurilor de consum și de producere aparținând prosumatorilor (Abrogă Ordinul 15/2021)</td>
+                        <td data-label="Link"><a href="https://legislatie.just.ro/Public/DetaliiDocument/252409" target="_blank" class="contact-link">vizualizare document</a></td>
                     </tr>
                     <tr>
-                        <td>ORDINUL PREȘEDINTELUI ANRE nr. 15 din 23 februarie 2022 - pentru aprobarea Metodologiei de stabilire a regulilor de comercializare a energiei electrice produse în centrale electrice din surse regenerabile cu putere electrică instalată de cel mult 400 kW pe loc de consum aparținând prosumatorilor, cu modificările și completările ulterioare</td>
-                        <td><a href="https://legislatie.just.ro/Public/DetaliiDocument/252373" target="_blank" class="contact-link">vizualizare document</a></td>
+                        <td data-label="Denumire act normativ">ORDINUL PREȘEDINTELUI ANRE nr. 15 din 23 februarie 2022 - pentru aprobarea Metodologiei de stabilire a regulilor de comercializare a energiei electrice produse în centrale electrice din surse regenerabile cu putere electrică instalată de cel mult 400 kW pe loc de consum aparținând prosumatorilor, cu modificările și completările ulterioare</td>
+                        <td data-label="Link"><a href="https://legislatie.just.ro/Public/DetaliiDocument/252373" target="_blank" class="contact-link">vizualizare document</a></td>
                     </tr>
                     <tr>
-                        <td>ORDINUL PREȘEDINTELUI ANRE nr. 50 din 23 iunie 2021 - pentru aprobarea regulilor de comercializare a energiei electrice produse în centrale electrice din surse regenerabile cu putere electrică instalată de cel mult 100 kW aparținând prosumatorilor (Abrogă Ordinul 226/2018)</td>
-                        <td><a href="https://legislatie.just.ro/Public/DetaliiDocument/243853" target="_blank" class="contact-link">vizualizare document</a></td>
+                        <td data-label="Denumire act normativ">ORDINUL PREȘEDINTELUI ANRE nr. 50 din 23 iunie 2021 - pentru aprobarea regulilor de comercializare a energiei electrice produse în centrale electrice din surse regenerabile cu putere electrică instalată de cel mult 100 kW aparținând prosumatorilor (Abrogă Ordinul 226/2018)</td>
+                        <td data-label="Link"><a href="https://legislatie.just.ro/Public/DetaliiDocument/243853" target="_blank" class="contact-link">vizualizare document</a></td>
                     </tr>
                     <tr>
-                        <td>ORDINUL PREȘEDINTELUI ANRE nr. 25 din 31 martie 2021 - pentru modificarea și completarea Ordinului Președintelui ANRE nr. 90/2015 privind aprobarea contractelor-cadru pentru serviciul de distribuție a energiei electrice și pentru modificarea Contractului-cadru de vânzare-cumpărare a energiei electrice produse de prosumatorii care dețin centrale electrice de producere a energiei electrice din surse regenerabile cu puterea instalată de cel mult 100 kW pe loc de consum, aprobat prin Ordinul ANRE nr. 227/2018</td>
-                        <td><a href="https://legislatie.just.ro/Public/DetaliiDocument/241005" target="_blank" class="contact-link">vizualizare document</a></td>
+                        <td data-label="Denumire act normativ">ORDINUL PREȘEDINTELUI ANRE nr. 25 din 31 martie 2021 - pentru modificarea și completarea Ordinului Președintelui ANRE nr. 90/2015 privind aprobarea contractelor-cadru pentru serviciul de distribuție a energiei electrice și pentru modificarea Contractului-cadru de vânzare-cumpărare a energiei electrice produse de prosumatorii care dețin centrale electrice de producere a energiei electrice din surse regenerabile cu puterea instalată de cel mult 100 kW pe loc de consum, aprobat prin Ordinul ANRE nr. 227/2018</td>
+                        <td data-label="Link"><a href="https://legislatie.just.ro/Public/DetaliiDocument/241005" target="_blank" class="contact-link">vizualizare document</a></td>
                     </tr>
                     <tr>
-                        <td>ORDINUL PREȘEDINTELUI ANRE nr. 105 din 03 august 2022 - pentru aprobarea contractelor-cadru de racordare la rețelele electrice de interes public</td>
-                        <td><a href="https://legislatie.just.ro/Public/DetaliiDocument/258288" target="_blank" class="contact-link">vizualizare document</a></td>
+                        <td data-label="Denumire act normativ">ORDINUL PREȘEDINTELUI ANRE nr. 105 din 03 august 2022 - pentru aprobarea contractelor-cadru de racordare la rețelele electrice de interes public</td>
+                        <td data-label="Link"><a href="https://legislatie.just.ro/Public/DetaliiDocument/258288" target="_blank" class="contact-link">vizualizare document</a></td>
                     </tr>
                     <tr>
-                        <td>ORDINUL PREȘEDINTELUI ANRE nr. 59 din 02 august 2013 - pentru aprobarea <a href="https://legislatie.just.ro/Public/DetaliiDocumentAfis/297330" target="_blank" class="contact-link">Regulamentului</a> privind racordarea utilizatorilor la rețelele electrice de interes public. (Modificat prin Ordinul 63/2014; Ordinul 111/2018; Ordinul 15/2019; Ordinul 22/2020; Ordinul 68/2020; Ordinul 60/2020; Ordinul 16/2021; Ordinul 45/2021; Ordinul 81/2022; Ordinul 133/2022; Ordinul 4/2023)</td>
-                        <td><a href="https://legislatie.just.ro/Public/DetaliiDocument/150711" target="_blank" class="contact-link">vizualizare document</a></td>
+                        <td data-label="Denumire act normativ">ORDINUL PREȘEDINTELUI ANRE nr. 59 din 02 august 2013 - pentru aprobarea <a href="https://legislatie.just.ro/Public/DetaliiDocumentAfis/297330" target="_blank" class="contact-link">Regulamentului</a> privind racordarea utilizatorilor la rețelele electrice de interes public. (Modificat prin Ordinul 63/2014; Ordinul 111/2018; Ordinul 15/2019; Ordinul 22/2020; Ordinul 68/2020; Ordinul 60/2020; Ordinul 16/2021; Ordinul 45/2021; Ordinul 81/2022; Ordinul 133/2022; Ordinul 4/2023)</td>
+                        <td data-label="Link"><a href="https://legislatie.just.ro/Public/DetaliiDocument/150711" target="_blank" class="contact-link">vizualizare document</a></td>
                     </tr>
                     <tr>
-                        <td>ORDINUL PREȘEDINTELUI ANRE nr. 165 din 16 septembrie 2020 - pentru modificarea și completarea unor ordine ale președintelui Autorității Naționale de Reglementare în Domeniul Energiei din domeniul promovării energiei electrice din surse regenerabile de energie</td>
-                        <td><a href="https://legislatie.just.ro/Public/DetaliiDocument/230504" target="_blank" class="contact-link">vizualizare document</a></td>
+                        <td data-label="Denumire act normativ">ORDINUL PREȘEDINTELUI ANRE nr. 165 din 16 septembrie 2020 - pentru modificarea și completarea unor ordine ale președintelui Autorității Naționale de Reglementare în Domeniul Energiei din domeniul promovării energiei electrice din surse regenerabile de energie</td>
+                        <td data-label="Link"><a href="https://legislatie.just.ro/Public/DetaliiDocument/230504" target="_blank" class="contact-link">vizualizare document</a></td>
                     </tr>
                     <tr>
-                        <td>ORDINUL PREȘEDINTELUI ANRE nr. 132 din iunie 2020 - privind modificarea și completarea Normei tehnice Condiții tehnice de racordare la rețelele electrice de interes public pentru prosumatorii cu injecție de putere activă în rețea, aprobate prin Ordinul Președintelui ANRE nr. 228/2018</td>
-                        <td><a href="https://legislatie.just.ro/Public/DetaliiDocument/227438" target="_blank" class="contact-link">vizualizare document</a></td>
+                        <td data-label="Denumire act normativ">ORDINUL PREȘEDINTELUI ANRE nr. 132 din iunie 2020 - privind modificarea și completarea Normei tehnice Condiții tehnice de racordare la rețelele electrice de interes public pentru prosumatorii cu injecție de putere activă în rețea, aprobate prin Ordinul Președintelui ANRE nr. 228/2018</td>
+                        <td data-label="Link"><a href="https://legislatie.just.ro/Public/DetaliiDocument/227438" target="_blank" class="contact-link">vizualizare document</a></td>
                     </tr>
                     <tr>
-                        <td>ORDINUL PREȘEDINTELUI ANRE nr. 77 din 13 mai 2020 - privind modificarea și completarea Ordinului Președintelui ANRE nr. 226/2018 pentru aprobarea regulilor de comercializare a energiei electrice produse în centrale electrice din surse regenerabile cu putere electrică instalată de cel mult 27 kW aparținând prosumatorilor</td>
-                        <td><a href="https://legislatie.just.ro/Public/DetaliiDocument/225900" target="_blank" class="contact-link">vizualizare document</a></td>
+                        <td data-label="Denumire act normativ">ORDINUL PREȘEDINTELUI ANRE nr. 77 din 13 mai 2020 - privind modificarea și completarea Ordinului Președintelui ANRE nr. 226/2018 pentru aprobarea regulilor de comercializare a energiei electrice produse în centrale electrice din surse regenerabile cu putere electrică instalată de cel mult 27 kW aparținând prosumatorilor</td>
+                        <td data-label="Link"><a href="https://legislatie.just.ro/Public/DetaliiDocument/225900" target="_blank" class="contact-link">vizualizare document</a></td>
                     </tr>
                     <tr>
-                        <td>ORDINUL PREȘEDINTELUI ANRE nr. 194 din 01 octombrie 2019 - pentru modificarea unor ordine ale președintelui Autorității Naționale de Reglementare în Domeniul Energiei referitoare la comercializarea energiei electrice produse în centrale electrice din surse regenerabile cu putere electrică instalată de cel mult 27 kW aparținând prosumatorilor</td>
-                        <td><a href="https://legislatie.just.ro/Public/DetaliiDocument/218661" target="_blank" class="contact-link">vizualizare document</a></td>
+                        <td data-label="Denumire act normativ">ORDINUL PREȘEDINTELUI ANRE nr. 194 din 01 octombrie 2019 - pentru modificarea unor ordine ale președintelui Autorității Naționale de Reglementare în Domeniul Energiei referitoare la comercializarea energiei electrice produse în centrale electrice din surse regenerabile cu putere electrică instalată de cel mult 27 kW aparținând prosumatorilor</td>
+                        <td data-label="Link"><a href="https://legislatie.just.ro/Public/DetaliiDocument/218661" target="_blank" class="contact-link">vizualizare document</a></td>
                     </tr>
                     <tr>
-                        <td>Comunicat Ministerul Mediului - validare instalatori sisteme fotovoltaice</td>
-                        <td><a href="https://anre.ro/wp-content/uploads/2023/03/Comunicat_validare_instalatori_sisteme_fotovoltaice.pdf" target="_blank" class="contact-link">vizualizare document</a></td>
+                        <td data-label="Denumire act normativ">Comunicat Ministerul Mediului - validare instalatori sisteme fotovoltaice</td>
+                        <td data-label="Link"><a href="https://anre.ro/wp-content/uploads/2023/03/Comunicat_validare_instalatori_sisteme_fotovoltaice.pdf" target="_blank" class="contact-link">vizualizare document</a></td>
                     </tr>
                     <tr>
-                        <td>ORDINUL PREȘEDINTELUI ANRE nr. 226 din 28 decembrie 2018 - pentru aprobarea regulilor de comercializare a energiei electrice produse în centrale electrice din surse regenerabile cu putere electrică instalată de cel mult 27 kW aparținând prosumatorilor, cu modificările și completările ulterioare (Modificat prin Ordinul 194/2019; Ordinul 77/2020: Abrogat de Ordinul 50/2021)</td>
-                        <td><a href="https://legislatie.just.ro/Public/DetaliiDocument/209495" target="_blank" class="contact-link">vizualizare document</a></td>
+                        <td data-label="Denumire act normativ">ORDINUL PREȘEDINTELUI ANRE nr. 226 din 28 decembrie 2018 - pentru aprobarea regulilor de comercializare a energiei electrice produse în centrale electrice din surse regenerabile cu putere electrică instalată de cel mult 27 kW aparținând prosumatorilor, cu modificările și completările ulterioare (Modificat prin Ordinul 194/2019; Ordinul 77/2020: Abrogat de Ordinul 50/2021)</td>
+                        <td data-label="Link"><a href="https://legislatie.just.ro/Public/DetaliiDocument/209495" target="_blank" class="contact-link">vizualizare document</a></td>
                     </tr>
                     <tr>
-                        <td>ORDINUL PREȘEDINTELUI ANRE nr. 227 din 28 decembrie 2018 - pentru aprobarea Contractului-cadru de vânzare-cumpărare a energiei electrice produse de prosumatorii care dețin centrale electrice de producere a energiei electrice din surse regenerabile cu puterea instalată de cel mult 27 kW pe loc de consum și pentru modificarea unor reglementări din sectorul energiei electrice, cu modificările și completările ulterioare (Modificat prin Ordinul 25/2021)</td>
-                        <td><a href="https://legislatie.just.ro/Public/DetaliiDocument/209498" target="_blank" class="contact-link">vizualizare document</a></td>
+                        <td data-label="Denumire act normativ">ORDINUL PREȘEDINTELUI ANRE nr. 227 din 28 decembrie 2018 - pentru aprobarea Contractului-cadru de vânzare-cumpărare a energiei electrice produse de prosumatorii care dețin centrale electrice de producere a energiei electrice din surse regenerabile cu puterea instalată de cel mult 27 kW pe loc de consum și pentru modificarea unor reglementări din sectorul energiei electrice, cu modificările și completările ulterioare (Modificat prin Ordinul 25/2021)</td>
+                        <td data-label="Link"><a href="https://legislatie.just.ro/Public/DetaliiDocument/209498" target="_blank" class="contact-link">vizualizare document</a></td>
                     </tr>
                     <tr>
-                        <td>ORDINUL PREȘEDINTELUI ANRE nr. 228 din 28 decembrie 2018 - pentru aprobarea <a href="https://legislatie.just.ro/Public/DetaliiDocumentAfis/227373" target="_blank" class="contact-link">Normei tehnice</a> „Condiții tehnice de racordare la rețelele electrice de interes public pentru prosumatorii cu injecție de putere activă în rețea”</td>
-                        <td><a href="https://legislatie.just.ro/Public/DetaliiDocument/209499" target="_blank" class="contact-link">vizualizare document</a></td>
+                        <td data-label="Denumire act normativ">ORDINUL PREȘEDINTELUI ANRE nr. 228 din 28 decembrie 2018 - pentru aprobarea <a href="https://legislatie.just.ro/Public/DetaliiDocumentAfis/227373" target="_blank" class="contact-link">Normei tehnice</a> „Condiții tehnice de racordare la rețelele electrice de interes public pentru prosumatorii cu injecție de putere activă în rețea”</td>
+                        <td data-label="Link"><a href="https://legislatie.just.ro/Public/DetaliiDocument/209499" target="_blank" class="contact-link">vizualizare document</a></td>
                     </tr>
                     <tr>
-                        <td>ORDINUL PREȘEDINTELUI ANRE nr. 18 din 02 martie 2022 - pentru aprobarea Procedurii privind racordarea la rețelele electrice de interes public de joasă tensiune a locurilor de consum aparținând utilizatorilor clienți casnici (Abrogă Ordinul 17/2021; Modificat prin Ordinul 133/2022, Ordinul 4/2023)</td>
-                        <td><a href="https://legislatie.just.ro/Public/DetaliiDocument/252416" target="_blank" class="contact-link">vizualizare document</a></td>
+                        <td data-label="Denumire act normativ">ORDINUL PREȘEDINTELUI ANRE nr. 18 din 02 martie 2022 - pentru aprobarea Procedurii privind racordarea la rețelele electrice de interes public de joasă tensiune a locurilor de consum aparținând utilizatorilor clienți casnici (Abrogă Ordinul 17/2021; Modificat prin Ordinul 133/2022, Ordinul 4/2023)</td>
+                        <td data-label="Link"><a href="https://legislatie.just.ro/Public/DetaliiDocument/252416" target="_blank" class="contact-link">vizualizare document</a></td>
                     </tr>
                     <tr>
-                        <td>ORDINUL PREȘEDINTELUI ANRE nr. 51 din 17 aprilie 2019 - privind aprobarea Procedurii de notificare pentru racordarea unităților generatoare și de verificare a conformității unităților generatoare cu cerințele tehnice privind racordarea unităților generatoare la rețelele electrice de interes public (Modifică Ordinele 30/2013 și 74/2013)</td>
-                        <td><a href="https://legislatie.just.ro/Public/DetaliiDocument/213253" target="_blank" class="contact-link">vizualizare document</a></td>
+                        <td data-label="Denumire act normativ">ORDINUL PREȘEDINTELUI ANRE nr. 51 din 17 aprilie 2019 - privind aprobarea Procedurii de notificare pentru racordarea unităților generatoare și de verificare a conformității unităților generatoare cu cerințele tehnice privind racordarea unităților generatoare la rețelele electrice de interes public (Modifică Ordinele 30/2013 și 74/2013)</td>
+                        <td data-label="Link"><a href="https://legislatie.just.ro/Public/DetaliiDocument/213253" target="_blank" class="contact-link">vizualizare document</a></td>
                     </tr>
                 </tbody>
             </table>
@@ -1290,39 +1364,33 @@
                 <thead>
                     <tr>
                         <th>Ziua</th>
-                        <th></th>
-                        <th></th>
+                        <th>Program</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td><strong>Luni</strong></td>
-                        <td>07:30</td>
-                        <td>16:00</td>
+                        <td data-label="Ziua"><strong>Luni</strong></td>
+                        <td data-label="Program">07:30 – 16:00</td>
                     </tr>
                     <tr>
-                        <td><strong>Marți</strong></td>
-                        <td>07:30</td>
-                        <td>16:00</td>
+                        <td data-label="Ziua"><strong>Marți</strong></td>
+                        <td data-label="Program">07:30 – 16:00</td>
                     </tr>
                     <tr>
-                        <td><strong>Miercuri</strong></td>
-                        <td>07:30</td>
-                        <td>16:00</td>
+                        <td data-label="Ziua"><strong>Miercuri</strong></td>
+                        <td data-label="Program">07:30 – 16:00</td>
                     </tr>
                     <tr>
-                        <td><strong>Joi</strong></td>
-                        <td>07:30</td>
-                        <td>16:00</td>
+                        <td data-label="Ziua"><strong>Joi</strong></td>
+                        <td data-label="Program">07:30 – 16:00</td>
                     </tr>
                     <tr>
-                        <td><strong>Vineri</strong></td>
-                        <td>07:30</td>
-                        <td>13:30</td>
+                        <td data-label="Ziua"><strong>Vineri</strong></td>
+                        <td data-label="Program">07:30 – 13:30</td>
                     </tr>
                     <tr>
-                        <td><strong>Sâmbătă - Duminică</strong></td>
-                        <td colspan="2" style="color: #f44336;">Închis</td>
+                        <td data-label="Ziua"><strong>Sâmbătă - Duminică</strong></td>
+                        <td data-label="Program" style="color: #f44336;">Închis</td>
                     </tr>
                 </tbody>
             </table>
