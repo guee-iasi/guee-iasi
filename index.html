@@ -88,6 +88,19 @@
             padding: 2px 6px;
         }
 
+        .banner-wrap {
+            text-align: center;
+            margin: 0 0 16px;
+        }
+
+        .banner-image {
+            width: 50%;
+            max-width: 980px;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -103,7 +116,7 @@
         }
 
         .nav-btn {
-            background: linear-gradient(145deg, #4CAF50, #45a049);
+            background: linear-gradient(145deg, #4CAF50, #43A047);
             color: white;
             border: none;
             padding: 15px 30px;
@@ -116,6 +129,8 @@
             align-items: center;
             gap: 10px;
             box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+            text-align: center;
+            justify-content: center;
         }
 
         .nav-btn:hover {
@@ -124,7 +139,7 @@
         }
 
         .nav-btn.blue {
-            background: linear-gradient(145deg, #2196F3, #1976D2);
+            background: linear-gradient(145deg, #2196F3, #1565C0);
             box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
         }
 
@@ -132,31 +147,13 @@
             box-shadow: 0 6px 25px rgba(33, 150, 243, 0.4);
         }
 
-        .nav-btn.orange {
-            background: linear-gradient(145deg, #FF9800, #F57C00);
-            box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3);
+        .nav-btn.gray {
+            background: linear-gradient(145deg, #8E9AA0, #6F7C85);
+            box-shadow: 0 4px 15px rgba(142, 154, 160, 0.3);
         }
 
-        .nav-btn.orange:hover {
-            box-shadow: 0 6px 25px rgba(255, 152, 0, 0.4);
-        }
-
-        .nav-btn.purple {
-            background: linear-gradient(145deg, #9C27B0, #7B1FA2);
-            box-shadow: 0 4px 15px rgba(156, 39, 176, 0.3);
-        }
-
-        .nav-btn.purple:hover {
-            box-shadow: 0 6px 25px rgba(156, 39, 176, 0.4);
-        }
-
-        .nav-btn.red {
-            background: linear-gradient(145deg, #f44336, #d32f2f);
-            box-shadow: 0 4px 15px rgba(244, 67, 54, 0.3);
-        }
-
-        .nav-btn.red:hover {
-            box-shadow: 0 6px 25px rgba(244, 67, 54, 0.4);
+        .nav-btn.gray:hover {
+            box-shadow: 0 6px 25px rgba(142, 154, 160, 0.4);
         }
 
         .section {
@@ -437,6 +434,10 @@
         }
 
         @media (max-width: 768px) {
+            .banner-image {
+                width: 65%;
+            }
+
             .header h1 {
                 font-size: 1.5rem;
             }
@@ -549,38 +550,41 @@
             </p>
             <p class="header-subtitle">
                 <img class="header-logo" src="https://www.icc.ro/wp-content/uploads/2023/10/logo-cj-iasi-01.png" alt="Consiliul Județean Iași">
-                Consiliul Judetean Iasi
+                Consiliul Județean Iași
             </p>
         </div>
     </div>
 
     <div class="container">
+        <div class="banner-wrap">
+            <img class="banner-image" src="imagine pnrr.png" alt="PNRR">
+        </div>
         <div class="nav-buttons">
             <a class="nav-btn" href="#programe">
                 📋 Programe
             </a>
-            <a class="nav-btn orange" href="#documente">
+            <a class="nav-btn blue" href="#documente">
                 📄 Documente
             </a>
             <a class="nav-btn" href="#legislatie-nationala">
-                ⚖️ LEGISLATIE NATIONALA
+                ⚖️ Legislație națională
             </a>
             <a class="nav-btn blue" href="#definitii-utile">
-                📘 DEFINITII UTILE
+                📘 Definiții utile
             </a>
-            <a class="nav-btn orange" href="#informatii-utile">
-                ℹ️ INFORMATII UTILE
+            <a class="nav-btn" href="#informatii-utile">
+                ℹ️ Informații utile
             </a>
-            <a class="nav-btn" href="#informatii-generale-prosumatori">
-                ☀️ INFORMATII GENERALE PROSUMATORI
+            <a class="nav-btn blue" href="#informatii-generale-prosumatori">
+                ☀️ Informații generale prosumatori
             </a>
             <a class="nav-btn" href="#anunturi-repowereu-c16">
-                📢 Anunturi - RePowerEU - C16
+                📢 Anunțuri-Componenta 16 – REPowerEU<br>PNRR
             </a>
-            <a class="nav-btn purple" href="#program">
+            <a class="nav-btn blue" href="#program">
                 🕐 Program
             </a>
-            <a class="nav-btn red" href="#contact">
+            <a class="nav-btn gray" href="#contact">
                 📞 Contact
             </a>
         </div>
@@ -670,14 +674,22 @@
                 </div>
             </div>
 
-            <div class="card" style="margin-top: 30px;">
-                <h3>📚 Resurse Disponibile</h3>
-                <ul style="margin-top: 15px; margin-left: 20px; color: #666; line-height: 2;">
-                    <li>Ghiduri de finanțare pentru ambele investiții</li>
-                    <li>Informații legislative actualizate</li>
-                    <li>Secțiuni de întrebări frecvente (FAQ)</li>
-                    <li>Date de contact reprezentanți GUEE</li>
-                </ul>
+            <div class="card" style="margin-top: 25px;">
+                <h3>RePowerEU: Ghidul specific – Investiția 4 Schema de granturi sub formă de bonuri valorice pentru accelerarea utilizării energiei din surse regenerabile de către gospodării</h3>
+                <p style="margin-top: 10px;">
+                    <a href="https://oportunitati-ue.gov.ro/apel/pnrr-ghidul-specific-investitia-4-schema-de-granturi-sub-forma-de-bonuri-valorice-pentru-accelerarea-utilizarii-energiei-din-surse-regenerabile-de-catre-gospodarii/#documente" target="_blank" class="contact-link">
+                        Deschide linkul
+                    </a>
+                </p>
+            </div>
+
+            <div class="card" style="margin-top: 20px;">
+                <h3>REPowerEU: Ghidul specific – Condiții de accesare a fondurilor europene aferent - Investiţiei 7 – Schema de granturi sub formă de bonuri valorice pentru îmbunătățirea eficienței energetice a gospodăriilor, Axa I – Renovare ce vizează eficiența energetică combinată cu instalarea de panouri solare pe clădirile rezidențiale unifamiliale, numai pentru gospodăriile sărace din punct de vedere energetic și pentru consumatorii de energie vulnerabili</h3>
+                <p style="margin-top: 10px;">
+                    <a href="https://mfe.gov.ro/pnrr-repowereu-ghidul-specific-conditii-de-accesare-a-fondurilor-europene-aferent-investitiei-7-schema-de-granturi-sub-forma-de-bonuri-valorice-pentru-imbunatatirea-eficientei-energetice-a-gospo/" target="_blank" class="contact-link">
+                        Deschide linkul
+                    </a>
+                </p>
             </div>
         </div>
 
@@ -1217,14 +1229,30 @@
 
             <div class="card">
                 <h3>Q&amp;A</h3>
-                <p style="color:#666; line-height:1.7;"><strong>Întrebare 1:</strong> Beneficiarul programului este sub tutelă. Se emite aviz favorabil sau se respinge?</p>
-                <p style="color:#666; line-height:1.7;"><strong>Răspuns 1:</strong> Aviz favorabil dacă tutorele are autorizația de a semna și sunt respectate procedurile legale.</p>
-                <p style="color:#666; line-height:1.7;"><strong>Întrebare 2:</strong> Contract comercial cu tutorele unei persoane minore vulnerabile care nu îndeplinește condițiile.</p>
-                <p style="color:#666; line-height:1.7;"><strong>Răspuns 2:</strong> Nu sunt îndeplinite criteriile de eligibilitate.</p>
-                <p style="color:#666; line-height:1.7;"><strong>Întrebare 3:</strong> Drept de habitație/uzufruct viager notat în cartea funciară.</p>
-                <p style="color:#666; line-height:1.7;"><strong>Răspuns 3:</strong> Nu sunt eligibili titularii cu sarcini/interdicții în cartea funciară.</p>
-                <p style="color:#666; line-height:1.7;"><strong>Întrebare 4:</strong> Coproprietate cu succesiune nedezbătută.</p>
-                <p style="color:#666; line-height:1.7;"><strong>Răspuns 4:</strong> Nu este îndeplinit criteriul de eligibilitate.</p>
+                <p style="color:#666; line-height:1.7;"><strong>Helpdesk – Ministerul Investițiilor și Proiectelor Europene</strong></p>
+
+                <p style="color:#666; line-height:1.7;"><strong>Întrebare 1:</strong> Beneficiarul programului, o persoană majoră, deține dreptul de proprietate exclusiv (cotă 1/1) asupra imobilului. Totuși, în extrasul de carte funciară este înregistrată o hotărâre judecătorească prin care s-a instituit tutela asupra acestuia pentru o perioadă de 5 ani. Prin urmare, se subînțelege că tutorele este persoana abilitată să semneze contractul comercial, și nu persoana vulnerabilă aflată sub tutelă. Se emite aviz favorabil sau se respinge?</p>
+                <p style="color:#666; line-height:1.7;"><strong>Răspuns 1 :</strong> În situația prezentată, având în vedere că persoana vulnerabilă este sub tutelă pentru o perioadă determinată de 5 ani, tutorele este, de fapt, persoana juridică abilitată să exercite drepturile legale în numele acesteia, inclusiv semnarea unui contract comercial. În contextul programului menționat, este important ca toate acțiunile să fie în concordanță cu reglementările legale privind tutela și capacitatea de semnătură a persoanei vulnerabile. Avizul favorabil poate fi emis în cazul în care se confirmă că tutorele are autorizația de a semna documentele necesare în numele persoanei sub tutelă, iar procedurile legale sunt respectate corespunzător. De asemenea, ar trebui să vă asigurați că toate condițiile legale referitoare la tutela persoanei vulnerabile sunt îndeplinite, inclusiv obținerea unor eventuale aprobări suplimentare necesare pentru semnarea contractului comercial.</p>
+                <p style="color:#666; line-height:1.7;">În concluzie, avizul favorabil poate fi emis, dar trebuie verificat în prealabil că toate formalitățile legale sunt îndeplinite.</p>
+
+                <p style="color:#666; line-height:1.7;"><strong>Întrebare 2 :</strong> Deși Ghidul specifică clar condițiile de eligibilitate, un operator economic a semnat un contract comercial cu tutorele unei persoane minore vulnerabile care nu le îndeplinește (neavând calitatea de proprietar).</p>
+                <p style="color:#666; line-height:1.7;"><strong>Răspuns 2 </strong>: Nu este necesară solicitarea de clarificări, deoarece nu sunt îndeplinite criteriile de eligibilitatea prevăzute in Ghid.</p>
+
+                <p style="color:#666; line-height:1.7;"><strong>Întrebare 3:</strong> Beneficiarul programului domiciliază în imobilul în care la cartea funciară este notat un drept de habitație sau uzufruct viager, constituit în favoarea fostului proprietar, se va emite aviz favorabil sau se respinge?</p>
+                <p style="color:#666; line-height:1.7;"><strong>Răspuns 3 :</strong> Nu sunt îndeplinite criteriile de eligibilitate: Conform prevederilor din Ghidul specific, 4.1.2 Documente necesare pentru constituirea dosarului BENEFICIARULUI FINAL, la Documente privind dreptul de proprietate se verifică cel puțin criteriile de eligibilitate:</p>
+                <ul class="services-list">
+                    <li>Beneficiarul final deține dreptul de proprietate privată asupra imobilului (teren și / sau clădire), la momentul depunerii cererii de finanțare.</li>
+                    <li>În plus, imobilul (clădire și teren) este liber de orice sarcini sau interdicții ce afectează implementarea proiectului.</li>
+                </ul>
+                <p style="color:#666; line-height:1.7;">În concluzie, NU sunt eligibili titularii dreptului de proprietate care au înscrise in Extrasele de Carte Funciara sarcini de acest tip (1. Uzufruct viager, 2. Ipoteca legală în favoarea unei persoane fizice, drept de habitație viageră).</p>
+
+                <p style="color:#666; line-height:1.7;"><strong>Întrebare 4:</strong> Dacă o adeverință de rol agricol/fiscal menționează doi soți, fiecare cu o cotă de ½, iar unul dintre ei este decedat fără succesiune dezbătută, cine trebuie trecut în contractul comercial la rubrica coproprietarilor și cum se procedează cu semnarea? Este suficientă nominalizarea și semnarea persoanelor care se regăsesc din Anexa nr. 24 conform Ordinul Ministrului Finanţelor Publice şi Ministrului Administraţiei şi Internelor nr. 2052/bis/1528/2006? Se cer clarificări sau se emite aviz favorabil sau se respinge?</p>
+                <p style="color:#666; line-height:1.7;"><strong>Răspuns 4 :</strong> Nu este indeplinit criteriul de eligibilitate Conform prevederilor din Ghidul specific, 4.1.2 Documente necesare pentru constituirea dosarului BENEFICIARULUI FINAL: În cazul în care imobilul (teren și/sau clădire) este deținut în coproprietate de mai multe persoane, sunt îndeplinite condițiile:</p>
+                <ul class="services-list">
+                    <li>Beneficiarul final, consumator vulnerabil de energie / persoana fizică, deține minimum 50% din suprafața utilă a clădirii și, de asemenea, minimum 50% din suprafața terenului.</li>
+                    <li>Beneficiarul final și ceilalți proprietari își dau acordul cu privire la implementarea proiectului (conform contractului comercial dintre Solicitant și beneficiar final).</li>
+                </ul>
+                <p style="color:#666; line-height:1.7;">Nu se cunosc actualii coproprietari, deoarece nu a fost dezbatută succesiunea.</p>
             </div>
 
         </div>
@@ -1464,7 +1492,10 @@
                 return;
             }
             const hash = location.hash.replace('#', '');
-            activateSection(hash || 'programe');
+
+            if (hash) {
+                activateSection(hash);
+            }
         }
 
         window.addEventListener('hashchange', () => showSection());
