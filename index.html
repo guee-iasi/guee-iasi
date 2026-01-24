@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghișeu Unic de Eficiență Energetică - Iași</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .header {
+            background: url("panouri.png") center/cover no-repeat;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.45);
+            z-index: 0;
+        }
+
+        .header > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .header h1 {
+            color: #ffffff;
+            font-size: 2rem;
+            margin-bottom: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .title-icon {
+            width: 42px;
+            height: 42px;
+            flex: 0 0 auto;
+        }
+
+        .title-icon .panel {
+            fill: #ffffff;
+        }
+
+        .title-icon .sun {
+            fill: #F9A825;
+        }
+
+        .header p {
+            color: #e9eef7;
+            font-size: 1.1rem;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 0;
+        }
+
+        .header-logo {
+            height: 34px;
+            width: auto;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2px 6px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        .nav-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .nav-btn {
+            background: linear-gradient(145deg, #4CAF50, #45a049);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(76, 175, 80, 0.4);
+        }
+
+        .nav-btn.blue {
+            background: linear-gradient(145deg, #2196F3, #1976D2);
+            box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
+        }
+
+        .nav-btn.blue:hover {
+            box-shadow: 0 6px 25px rgba(33, 150, 243, 0.4);
+        }
+
+        .nav-btn.orange {
+            background: linear-gradient(145deg, #FF9800, #F57C00);
+            box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3);
+        }
+
+        .nav-btn.orange:hover {
+            box-shadow: 0 6px 25px rgba(255, 152, 0, 0.4);
+        }
+
+        .nav-btn.purple {
+            background: linear-gradient(145deg, #9C27B0, #7B1FA2);
+            box-shadow: 0 4px 15px rgba(156, 39, 176, 0.3);
+        }
+
+        .nav-btn.purple:hover {
+            box-shadow: 0 6px 25px rgba(156, 39, 176, 0.4);
+        }
+
+        .nav-btn.red {
+            background: linear-gradient(145deg, #f44336, #d32f2f);
+            box-shadow: 0 4px 15px rgba(244, 67, 54, 0.3);
+        }
+
+        .nav-btn.red:hover {
+            box-shadow: 0 6px 25px rgba(244, 67, 54, 0.4);
+        }
+
+        .section {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section h2 {
+            color: #1e3c72;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #4CAF50;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-left: 5px solid #4CAF50;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateX(10px);
+        }
+
+        .card.i4 {
+            border-left-color: #2196F3;
+        }
+
+        .card.i7 {
+            border-left-color: #FF9800;
+        }
+
+        .card h3 {
+            color: #1e3c72;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .info-box {
+            background: linear-gradient(145deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .info-box:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-box .icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .info-box h3 {
+            color: #1e3c72;
+            margin-bottom: 10px;
+        }
+
+        .info-box p {
+            color: #666;
+        }
+
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .schedule-table th,
+        .schedule-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .schedule-table th {
+            background: #1e3c72;
+            color: white;
+        }
+
+        .schedule-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        .definitions-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .definitions-table th,
+        .definitions-table td {
+            padding: 14px;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+            vertical-align: top;
+        }
+
+        .definitions-table th {
+            background: #1e3c72;
+            color: white;
+        }
+
+        .useful-info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .useful-info-table th,
+        .useful-info-table td {
+            padding: 14px;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+            vertical-align: top;
+        }
+
+        .useful-info-table th {
+            background: #1e3c72;
+            color: white;
+        }
+
+        .useful-info-table .links-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .useful-info-table .links-list li {
+            margin-bottom: 8px;
+        }
+
+        .prosumator-section h3 {
+            color: #1e3c72;
+            margin: 20px 0 10px;
+        }
+
+        .prosumator-list,
+        .prosumator-sublist,
+        .prosumator-steps {
+            margin-left: 22px;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .prosumator-list li,
+        .prosumator-sublist li,
+        .prosumator-steps li {
+            margin-bottom: 6px;
+        }
+
+        .contact-link {
+            display: inline-block;
+            color: #2196F3;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .contact-link:hover {
+            color: #1976D2;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(145deg, #4CAF50, #45a049);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(76, 175, 80, 0.4);
+        }
+
+        .services-list {
+            list-style: none;
+        }
+
+        .services-list li {
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .services-list li:hover {
+            background: #e3f2fd;
+            transform: translateX(10px);
+        }
+
+        .services-list li::before {
+            content: "✓";
+            color: #4CAF50;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .legislation-group {
+            margin-bottom: 25px;
+        }
+
+        .legislation-group h3 {
+            color: #1e3c72;
+            margin-bottom: 15px;
+        }
+
+        .legislation-list {
+            list-style: none;
+        }
+
+        .legislation-list li {
+            padding: 15px 20px;
+            margin-bottom: 12px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border-left: 5px solid #2196F3;
+        }
+
+        .legislation-list li p {
+            color: #666;
+            line-height: 1.6;
+            margin-top: 6px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: white;
+            margin-top: 20px;
+        }
+
+        .footer a {
+            color: #90CAF9;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .nav-btn {
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
+
+            .section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <h1>
+                <svg class="title-icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+                    <circle class="sun" cx="48" cy="14" r="8"></circle>
+                    <rect class="panel" x="6" y="26" width="52" height="20" rx="3"></rect>
+                    <rect class="panel" x="10" y="30" width="12" height="6" rx="1"></rect>
+                    <rect class="panel" x="26" y="30" width="12" height="6" rx="1"></rect>
+                    <rect class="panel" x="42" y="30" width="12" height="6" rx="1"></rect>
+                    <rect class="panel" x="10" y="38" width="12" height="6" rx="1"></rect>
+                    <rect class="panel" x="26" y="38" width="12" height="6" rx="1"></rect>
+                    <rect class="panel" x="42" y="38" width="12" height="6" rx="1"></rect>
+                    <rect class="panel" x="30" y="48" width="4" height="8" rx="1"></rect>
+                    <rect class="panel" x="24" y="56" width="16" height="4" rx="2"></rect>
+                </svg>
+                Ghișeu Unic de Eficiență Energetică
+            </h1>
+            <p style="color:#e9eef7; font-size:1rem; text-shadow:0 2px 6px rgba(0, 0, 0, 0.4);">
+                🌳 Powering a Greener Tomorrow for Our Community
+            </p>
+            <p class="header-subtitle">
+                <img class="header-logo" src="https://www.icc.ro/wp-content/uploads/2023/10/logo-cj-iasi-01.png" alt="Consiliul Județean Iași">
+                Consiliul Judetean Iasi
+            </p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="nav-buttons">
+            <a class="nav-btn" href="#programe">
+                📋 Programe
+            </a>
+            <a class="nav-btn orange" href="#documente">
+                📄 Documente
+            </a>
+            <a class="nav-btn" href="#legislatie-nationala">
+                ⚖️ LEGISLATIE NATIONALA
+            </a>
+            <a class="nav-btn blue" href="#definitii-utile">
+                📘 DEFINITII UTILE
+            </a>
+            <a class="nav-btn orange" href="#informatii-utile">
+                ℹ️ INFORMATII UTILE
+            </a>
+            <a class="nav-btn" href="#informatii-generale-prosumatori">
+                ☀️ INFORMATII GENERALE PROSUMATORI
+            </a>
+            <a class="nav-btn" href="#anunturi-repowereu-c16">
+                📢 Anunturi - RePowerEU - C16
+            </a>
+            <a class="nav-btn purple" href="#program">
+                🕐 Program
+            </a>
+            <a class="nav-btn red" href="#contact">
+                📞 Contact
+            </a>
+        </div>
+
+        <!-- Programe Section -->
+        <div id="programe" class="section active">
+            <h2>📋 Programe de Finanțare</h2>
+            <p style="margin-bottom: 25px; color: #666; font-size: 1.05rem;">
+                Lista programelor și resurselor relevante, cu link-urile oficiale.
+            </p>
+
+            <ul class="services-list">
+                <li>
+                    Programul național de consolidare a clădirilor cu risc seismic ridicat
+                    – <a class="contact-link" href="https://www.mdlpa.ro/pages/pnccrs" target="_blank">https://www.mdlpa.ro/pages/pnccrs</a>
+                </li>
+                <li>
+                    PROGRAMUL NAȚIONAL DE REABILITARE TERMICĂ
+                    – <a class="contact-link" href="https://www.mdlpa.ro/pages/pncrestereperformanta" target="_blank">https://www.mdlpa.ro/pages/pncrestereperformanta</a>
+                </li>
+                <li>
+                    PNRR: RePower, Investiția 7 Renovare ce vizează eficiența energetică combinată cu instalarea de panouri solare
+                    pe clădirile rezidențiale unifamiliale, numai pentru gospodăriile sărace din punct de vedere energetic și pentru
+                    consumatorii de energie vulnerabili
+                    – <a class="contact-link" href="https://mfe.gov.ro/ghidul-specific-renovare-ce-vizeaza-eficienta-energetica-combinata-cu-instalarea-de-panouri-solare-pe-cladirile-rezidentiale-unifamiliale-numai-pentru-gospodariile-sarace-din-punct-de-vedere-energe/" target="_blank">link</a>
+                </li>
+                <li>
+                    POIM: Ghidul solicitantului – eficiență energetică la nivelul IMM-urilor și întreprinderilor mari
+                    – <a class="contact-link" href="https://mfe.gov.ro/poim-ghidul-solicitantului-eficienta-energetica-la-nivelul-imm-urilor-si-intreprinderilor-mari/" target="_blank">link</a>
+                </li>
+                <li>
+                    PNRR: Ghidul specific – Investiția 4 Schema de granturi sub formă de bonuri valorice pentru accelerarea utilizării
+                    energiei din surse regenerabile de către gospodării
+                    – <a class="contact-link" href="https://mfe.gov.ro/pnrr-ghidul-specific-investitia-4-schema-de-granturi-sub-forma-de-bonuri-valorice-pentru-accelerarea-utilizarii-energiei-din-surse-regenerabile-de-catre-gospodarii/" target="_blank">link</a>
+                </li>
+                <li>
+                    Program de cooperare România-Elveția - Ghidul solicitantului pentru Componentele 1,2 și 4 ale Programului pentru
+                    Eficiență energetică și energie regenerabilă
+                    – <a class="contact-link" href="https://www.mdlpa.ro/uploads/articole/attachments/6792237f69093643042447.pdf" target="_blank">https://www.mdlpa.ro/uploads/articole/attachments/6792237f69093643042447.pdf</a>
+                </li>
+                <li>
+                    ANRE – Ghidul prosumatorului cu capacitate de cel mult 400 kW pe loc de consum
+                    – <a class="contact-link" href="https://anre.ro/wp-content/uploads/2023/07/Ghidul_prosumatorului_actualizare_23.03.2023.pdf" target="_blank">https://anre.ro/wp-content/uploads/2023/07/Ghidul_prosumatorului_actualizare_23.03.2023.pdf</a>
+                </li>
+                <li>
+                    Lista auditori/manageri autorizati
+                    – <a class="contact-link" href="https://portal.anre.ro/PublicLists/AutorizatiiElectricieniAutorizati?menu=Eficiency" target="_blank">https://portal.anre.ro/PublicLists/AutorizatiiElectricieniAutorizati?menu=Eficiency</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Servicii Section -->
+        <div id="servicii" class="section">
+            <h2>🛠️ Servicii Oferite</h2>
+            <ul class="services-list">
+                <li>Evaluarea și aprobarea dosarelor beneficiarilor</li>
+                <li>Emiterea certificatelor GUEE (necesare pentru depunerea cererilor de finanțare)</li>
+                <li>Verificarea documentelor conform ghidurilor specifice</li>
+                <li>Suport pentru depunerea electronică prin ePortal</li>
+                <li>Consultanță privind eligibilitatea și documentația necesară</li>
+                <li>Informații despre ghiduri de finanțare și legislație</li>
+            </ul>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="https://eportal.icc.ro" target="_blank" class="cta-button">
+                    🌐 Accesează ePortal
+                </a>
+            </div>
+        </div>
+
+        <!-- Documente Section -->
+        <div id="documente" class="section">
+            <h2>📄 Depunere Documente</h2>
+
+            <div class="info-grid">
+                <div class="info-box">
+                    <div class="icon">🏢</div>
+                    <h3>Depunere Fizică</h3>
+                    <p>Dosarele pot fi depuse personal la sediul GUEE din Iași</p>
+                </div>
+                <div class="info-box">
+                    <div class="icon">💻</div>
+                    <h3>Depunere Electronică</h3>
+                    <p>Prin intermediul platformei ePortal la adresa
+                        <a href="https://eportal.icc.ro" target="_blank" class="contact-link">eportal.icc.ro</a>
+                    </p>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top: 30px;">
+                <h3>📚 Resurse Disponibile</h3>
+                <ul style="margin-top: 15px; margin-left: 20px; color: #666; line-height: 2;">
+                    <li>Ghiduri de finanțare pentru ambele investiții</li>
+                    <li>Informații legislative actualizate</li>
+                    <li>Secțiuni de întrebări frecvente (FAQ)</li>
+                    <li>Date de contact reprezentanți GUEE</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Definitii Utile Section -->
+        <div id="definitii-utile" class="section">
+            <h2>📘 Definiții Utile</h2>
+            <p style="margin-bottom: 20px; color: #666; font-size: 1.05rem;">
+                Termeni relevanți pentru activitatea GUEE și eficiența energetică.
+            </p>
+
+            <table class="definitions-table">
+                <thead>
+                    <tr>
+                        <th>Termen</th>
+                        <th>Definiție</th>
+                        <th>Sursă</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ghișee unice de eficiență energetică</td>
+                        <td>se înființează în scopul oferirii serviciilor de informare și consiliere tehnică în domeniul
+                            eficienței energetice în clădiri și al utilizării surselor regenerabile de energie pentru
+                            consumatori și prosumatori, către persoane fizice și juridice, inclusiv comunități de energie,
+                            potențiali beneficiari ai investițiilor, în privința programelor de investiții finanțate din
+                            fonduri europene, din bugetul de stat, precum și alte surse legal constituite</td>
+                        <td>O.U.G. nr. 92/2024</td>
+                    </tr>
+                    <tr>
+                        <td>prosumator</td>
+                        <td>clientul final care își desfășoară activitățile în spațiul propriu deținut cu orice titlu,
+                            aferent unui punct de delimitare cu rețeaua electrică, precizat prin certificatul de racordare
+                            și care produce energie electrică din surse regenerabile pentru propriul consum, a cărui
+                            activitate specifică nu este producerea energiei electrice, care consumă și care poate stoca
+                            și vinde energie electrică produsă sau stocată furnizorului de energie electrică cu care acesta
+                            are încheiat contract de furnizare a energiei electrice și/sau consumatorilor racordați la barele
+                            centralei electrice, inclusiv care poate deconta energia electrică produsă și livrată cu energia
+                            electrică consumată din rețea pentru mai multe locuri de producere și consum ale acestora, dacă
+                            pentru locurile de consum respective este același furnizor de energie electrică și dacă sunt
+                            racordate la rețeaua electrică a distribuitorului la care este racordat prosumatorul, cu condiția
+                            ca, în cazul consumatorilor autonomi necasnici de energie, aceste activități să nu constituie
+                            activitatea lor comercială sau profesională primară</td>
+                        <td>Legea nr. 123/2012 (art. 3 pct. 95)</td>
+                    </tr>
+                    <tr>
+                        <td>consumator vulnerabil</td>
+                        <td>persoană singură/familie, client final aparținând unei categorii de clienți casnici care, din
+                            motive de sănătate, handicap, vârstă, venituri insuficiente sau izolare față de sursele de energie,
+                            se află în risc de marginalizare socială și care, pentru prevenirea acestui risc, beneficiază de
+                            măsuri de protecție socială, inclusiv de natură financiară, și servicii suplimentare pentru a-și
+                            asigura cel puțin nevoile energetice minimale. Măsurile de protecție socială, precum și criteriile
+                            de eligibilitate pentru acestea se stabilesc prin acte normative</td>
+                        <td>Legea nr. 123/2012 (art. 3 pct. 95)</td>
+                    </tr>
+                    <tr>
+                        <td>audit energetic al clădirii</td>
+                        <td>totalitatea activităților specifice prin care se obțin date și elemente tehnice despre profilul
+                            consumului energetic al unei clădiri/unități de clădire existente, urmate de identificarea
+                            soluțiilor de creștere a performanței energetice, de cuantificarea modificărilor consumurilor
+                            energetice rezultate din soluțiile propuse, de evaluarea eficienței economice a implementării
+                            acestora prin indicatori economici și finalizate cu raportul de audit, potrivit metodologiei de
+                            calcul al performanței energetice a clădirilor</td>
+                        <td>Legea nr. 372/2005 (art. 3 pct. 21)</td>
+                    </tr>
+                    <tr>
+                        <td>auditor energetic pentru clădiri</td>
+                        <td>persoană fizică atestată de Ministerul Lucrărilor Publice, Dezvoltării și Administrației, în
+                            conformitate cu prevederile legale în vigoare, care are dreptul să elaboreze rapoarte de audit
+                            energetic și/sau certificate de performanță energetică pentru clădiri/unități de clădire, în
+                            conformitate cu metodologia specifică adoptată la nivel național aprobată prin ordin al ministrului
+                            lucrărilor publice, dezvoltării și administrației. Auditorul energetic pentru clădiri este
+                            specialistul care își desfășoară activitatea ca persoană fizică autorizată sau ca angajat al unor
+                            persoane juridice, conform prevederilor legale în vigoare</td>
+                        <td>Legea nr. 372/2005 (art. 3 pct. 23)</td>
+                    </tr>
+                    <tr>
+                        <td>expert tehnic atestat</td>
+                        <td>specialist, persoană fizică, atestat de Ministerul Lucrărilor Publice, Dezvoltării și Administrației
+                            potrivit prevederilor Legii nr. 10/1995 privind calitatea în construcții, republicată, cu
+                            modificările și completările ulterioare, pentru specialitățile instalații de încălzire, instalații
+                            de ventilare, instalații de climatizare și condiționare a aerului. Expertul tehnic atestat este
+                            specialistul care are dreptul să realizeze inspecții, din punctul de vedere al eficienței energetice,
+                            ale sistemelor de încălzire, de climatizare și de ventilare și să întocmească rapoarte de inspecție
+                            pentru acestea</td>
+                        <td>Legea nr. 372/2005 (art. 3 pct. 24)</td>
+                    </tr>
+                    <tr>
+                        <td>renovare aprofundată</td>
+                        <td>renovare care conduce la îmbunătățirea cu peste 60% a performanței energetice a unei clădiri,
+                            estimată prin calcul potrivit metodologiei de calcul al performanței energetice a clădirilor în
+                            raport cu starea actuală și utilizarea în condiții normate a clădirii</td>
+                        <td>Legea nr. 372/2005 (art. 3 pct. 37)</td>
+                    </tr>
+                    <tr>
+                        <td>renovare majoră</td>
+                        <td>lucrările proiectate și efectuate la anvelopa clădirii și/sau la sistemele tehnice ale acesteia,
+                            ale căror costuri depășesc 25% din valoarea de impozitare a clădirii, exclusiv valoarea terenului
+                            pe care este situată clădirea. Valoarea de impozitare a clădirii se determină potrivit Legii
+                            nr. 227/2015 privind Codul fiscal, cu modificările și completările ulterioare</td>
+                        <td>Legea nr. 372/2005 (art. 3 pct. 9)</td>
+                    </tr>
+                    <tr>
+                        <td>certificat de performanță energetică a clădirii</td>
+                        <td>document elaborat conform metodologiei de calcul al performanței energetice a clădirilor, prin care
+                            este indicată performanța energetică a unei clădiri sau a unei unități de clădire și care cuprinde
+                            date cu privire la consumurile calculate de energie primară și finală, inclusiv din surse regenerabile,
+                            precum și cantitatea de emisii echivalent CO_2. Pentru clădirile existente, certificatul cuprinde și
+                            măsuri recomandate pentru reducerea consumurilor de energie, precum și pentru creșterea ponderii
+                            utilizării surselor regenerabile de energie în consumul total</td>
+                        <td>Legea nr. 372/2005 (art. 3 pct. 3)</td>
+                    </tr>
+                    <tr>
+                        <td>performanța energetică a clădirii</td>
+                        <td>energia calculată conform metodologiei de calcul al performanței energetice a clădirilor pentru a
+                            răspunde necesităților legate de utilizarea în condiții normate, necesități care includ în principal:
+                            încălzirea, prepararea apei calde menajere, răcirea, ventilarea și iluminatul</td>
+                        <td>Legea nr. 372/2005 (art. 3 pct. 2)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Informatii Utile Section -->
+        <div id="informatii-utile" class="section">
+            <h2>ℹ️ Informații Utile</h2>
+            <p style="margin-bottom: 20px; color: #666; font-size: 1.05rem;">
+                Resurse oficiale și documente relevante pentru prosumatori și eficiență energetică.
+            </p>
+
+            <table class="useful-info-table">
+                <thead>
+                    <tr>
+                        <th>Resursă</th>
+                        <th>Link</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            Registre auditori energetici pentru clădiri, verificatori de proiecte, experți tehnici în construcții
+                            <div style="color:#999; margin-top:6px;">site oficial M.D.L.P.A.</div>
+                        </td>
+                        <td>
+                            <a href="https://www.mdlpa.ro/pages/registrepublice" target="_blank" class="contact-link">
+                                link registre publice M.D.L.P.A.
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Performanța energetică a clădirilor
+                            <div style="color:#999; margin-top:6px;">site oficial M.D.L.P.A.</div>
+                        </td>
+                        <td>
+                            <a href="https://www.mdlpa.ro/pages/eficientaenergetica" target="_blank" class="contact-link">
+                                https://www.mdlpa.ro/pages/eficientaenergetica
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Prosumatori
+                            <div style="color:#999; margin-top:6px;">site oficial ANRE</div>
+                        </td>
+                        <td>
+                            <a href="https://anre.ro/consumatori/consumatori-legislatie/" target="_blank" class="contact-link">
+                                https://anre.ro/consumatori/consumatori-legislatie/
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>GHIDUL PROSUMATORULUI</td>
+                        <td>
+                            <a href="https://anre.ro/wp-content/uploads/2023/07/Ghidul_prosumatorului_actualizare_23.03.2023.pdf" target="_blank" class="contact-link">
+                                vizualizare document
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            ETAPELE PROCESULUI DE RACORDARE LA REȚEAUA ELECTRICĂ DE INTERES PUBLIC a locurilor de consum și de
+                            producere aparținând prosumatorilor, conform prevederilor ORDINULUI Președintelui A.N.R.E. nr. 19/2022
+                        </td>
+                        <td>
+                            <ul class="links-list">
+                                <li>
+                                    pentru: situația în care nu se realizează lucrări suplimentare sau modificări ale instalațiilor
+                                    electrice din amonte de punctul de delimitare
+                                    <br>
+                                    <a href="https://anre.ro/wp-content/uploads/2023/03/23-02-10-11-45-43EE_Etape_proces_de_racordare_LC_existent_prosumator.pdf" target="_blank" class="contact-link">
+                                        vizualizare document
+                                    </a>
+                                </li>
+                                <li>
+                                    pentru: locuri de consum și de producere noi; locuri de consum/de consum și de producere existente la care
+                                    se racordează instalații de producere a energiei electrice, cu creșterea puterii față de puterea aprobată
+                                    anterior și modificări ale instalațiilor electrice din amonte de punctul de delimitare; situația în care
+                                    prosumatorul încheie contractul pentru proiectarea și execuția instalației de racordare cu operatorul
+                                    economic atestat A.N.R.E. (OE)
+                                    <br>
+                                    <a href="https://anre.ro/wp-content/uploads/2023/03/23-02-10-11-45-36EE_Etape_proces_de_racordare_LCLP_prosumator_1.pdf" target="_blank" class="contact-link">
+                                        vizualizare document
+                                    </a>
+                                </li>
+                                <li>
+                                    pentru: locuri de consum și de producere noi; locuri de consum/de consum și de producere existente la care
+                                    se racordează instalații de producere a energiei electrice, cu creșterea puterii față de puterea aprobată
+                                    anterior și modificări ale instalațiilor electrice din amonte de punctul de delimitare; situația în care
+                                    operatorul de distribuție (OD) încheie contract pentru proiectarea și execuția instalației de racordare
+                                    prin achiziție publică sau cu operatorul economic atestat A.N.R.E. (OE), ales de prosumator
+                                    <br>
+                                    <a href="https://anre.ro/wp-content/uploads/2023/03/23-02-10-11-45-40EE_Etape_proces_de_racordare_LC__LP_prosumator_2.pdf" target="_blank" class="contact-link">
+                                        vizualizare document
+                                    </a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Informatii Generale Prosumatori Section -->
+        <div id="informatii-generale-prosumatori" class="section prosumator-section">
+            <h2>☀️ Informații Generale Prosumatori</h2>
+            <p style="margin-bottom: 20px; color: #666; font-size: 1.05rem;">
+                Ghid de bază despre statutul și funcționarea prosumatorilor în România.
+            </p>
+
+            <h3>Ce este un prosumator?</h3>
+            <p style="color:#666; line-height:1.7;">
+                Un <strong>prosumator</strong> este o persoană fizică sau juridică care <strong>produce energie electrică
+                din surse regenerabile pentru consum propriu</strong> și <strong>injectează surplusul în rețeaua publică</strong>,
+                devenind simultan:
+            </p>
+            <ul class="prosumator-list">
+                <li><strong>producător</strong> (<em>producer</em>)</li>
+                <li><strong>consumator</strong> (<em>consumer</em>)</li>
+            </ul>
+
+            <h3>Semnificația noțiunii de prosumator (art. 3 pct. 95, Legea nr. 123/2012)</h3>
+            <p style="color:#666; line-height:1.7;">
+                <strong>prosumator</strong> - clientul final care își desfășoară activitățile în spațiul propriu deținut cu orice titlu,
+                aferent unui punct de delimitare cu rețeaua electrică, precizat prin certificatul de racordare și care produce energie
+                electrică din surse regenerabile pentru propriul consum, a cărui activitate specifică nu este producerea energiei electrice,
+                care consumă și care poate stoca și vinde energie electrică produsă sau stocată furnizorului de energie electrică cu care
+                acesta are încheiat contract de furnizare a energiei electrice și/sau consumatorilor racordați la barele centralei electrice,
+                inclusiv care poate deconta energia electrică produsă și livrată cu energia electrică consumată din rețea pentru mai multe
+                locuri de producere și consum ale acestora, dacă pentru locurile de consum respective este același furnizor de energie electrică
+                și dacă sunt racordate la rețeaua electrică a distribuitorului la care este racordat prosumatorul, cu condiția ca, în cazul
+                consumatorilor autonomi necasnici de energie, aceste activități să nu constituie activitatea lor comercială sau profesională primară.
+            </p>
+
+            <h3>Cum funcționează sistemul unui prosumator?</h3>
+            <ol class="prosumator-steps">
+                <li>Panourile fotovoltaice produc energie electrică.</li>
+                <li>Energia este folosită <strong>prioritar pentru consumul propriu</strong>.</li>
+                <li>Surplusul de energie:</li>
+            </ol>
+            <ul class="prosumator-sublist" style="margin-top:-8px;">
+                <li>este livrat în rețeaua națională;</li>
+                <li>este <strong>compensat cantitativ sau financiar</strong>, conform reglementărilor.</li>
+            </ul>
+            <ol class="prosumator-steps" start="4">
+                <li>Atunci când producția este insuficientă, prosumatorul <strong>consumă energie din rețea</strong>, ca orice client obișnuit.</li>
+            </ol>
+
+            <h3>Cadrul legal din România</h3>
+            <p style="color:#666; line-height:1.7;">
+                Statutul de prosumator este reglementat prin legislația națională, sub coordonarea:
+            </p>
+            <ul class="prosumator-list">
+                <li><strong>Autoritatea Națională de Reglementare în Domeniul Energiei (ANRE)</strong></li>
+                <li>transpunerea directivelor europene privind energia regenerabilă și eficiența energetică</li>
+            </ul>
+
+            <h3>Acte normative relevante</h3>
+            <table class="useful-info-table">
+                <thead>
+                    <tr>
+                        <th>Denumire act normativ</th>
+                        <th>Link</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>LEGE nr. 123 din 10 iulie 2012 - a energiei electrice și a gazelor naturale, cu completările și modificările ulterioare</td>
+                        <td><a href="https://legislatie.just.ro/Public/DetaliiDocument/139677" target="_blank" class="contact-link">vizualizare document</a></td>
+                    </tr>
+                    <tr>
+                        <td>ORDINUL PREȘEDINTELUI ANRE nr. 95 din 29 iunie 2022 - privind modificarea și completarea Ordinului președintelui ANRE nr. 15/2022 pentru aprobarea Metodologiei de stabilire a regulilor de comercializare a energiei electrice produse în centrale electrice din surse regenerabile cu putere electrică instalată de cel mult 400 kW pe loc de consum aparținând prosumatorilor</td>
+                        <td><a href="https://legislatie.just.ro/Public/DetaliiDocument/256956" target="_blank" class="contact-link">vizualizare document</a></td>
+                    </tr>
+                    <tr>
+                        <td>ORDINUL PREȘEDINTELUI ANRE nr. 94 din 29 iunie 2022 - pentru modificarea unor ordine ale președintelui ANRE din domeniul promovării energiei electrice din surse regenerabile de energie (Modifică Ordinul 179/2018, Ordinul 15/2022 și Ordinul 77/2017)</td>
+                        <td><a href="https://legislatie.just.ro/Public/DetaliiDocument/256904" target="_blank" class="contact-link">vizualizare document</a></td>
+                    </tr>
+                    <tr>
+                        <td>ORDINUL PREȘEDINTELUI ANRE nr. 19 din 02 martie 2022 - pentru aprobarea Procedurii privind racordarea la rețelele electrice de interes public a locurilor de consum și de producere aparținând prosumatorilor (Abrogă Ordinul 15/2021)</td>
+                        <td><a href="https://legislatie.just.ro/Public/DetaliiDocument/252409" target="_blank" class="contact-link">vizualizare document</a></td>
+                    </tr>
+                    <tr>
+                        <td>ORDINUL PREȘEDINTELUI ANRE nr. 15 din 23 februarie 2022 - pentru aprobarea Metodologiei de stabilire a regulilor de comercializare a energiei electrice produse în centrale electrice din surse regenerabile cu putere electrică instalată de cel mult 400 kW pe loc de consum aparținând prosumatorilor, cu modificările și completările ulterioare</td>
+                        <td><a href="https://legislatie.just.ro/Public/DetaliiDocument/252373" target="_blank" class="contact-link">vizualizare document</a></td>
+                    </tr>
+                    <tr>
+                        <td>ORDINUL PREȘEDINTELUI ANRE nr. 50 din 23 iunie 2021 - pentru aprobarea regulilor de comercializare a energiei electrice produse în centrale electrice din surse regenerabile cu putere electrică instalată de cel mult 100 kW aparținând prosumatorilor (Abrogă Ordinul 226/2018)</td>
+                        <td><a href="https://legislatie.just.ro/Public/DetaliiDocument/243853" target="_blank" class="contact-link">vizualizare document</a></td>
+                    </tr>
+                    <tr>
+                        <td>ORDINUL PREȘEDINTELUI ANRE nr. 25 din 31 martie 2021 - pentru modificarea și completarea Ordinului Președintelui ANRE nr. 90/2015 privind aprobarea contractelor-cadru pentru serviciul de distribuție a energiei electrice și pentru modificarea Contractului-cadru de vânzare-cumpărare a energiei electrice produse de prosumatorii care dețin centrale electrice de producere a energiei electrice din surse regenerabile cu puterea instalată de cel mult 100 kW pe loc de consum, aprobat prin Ordinul ANRE nr. 227/2018</td>
+                        <td><a href="https://legislatie.just.ro/Public/DetaliiDocument/241005" target="_blank" class="contact-link">vizualizare document</a></td>
+                    </tr>
+                    <tr>
+                        <td>ORDINUL PREȘEDINTELUI ANRE nr. 105 din 03 august 2022 - pentru aprobarea contractelor-cadru de racordare la rețelele electrice de interes public</td>
+                        <td><a href="https://legislatie.just.ro/Public/DetaliiDocument/258288" target="_blank" class="contact-link">vizualizare document</a></td>
+                    </tr>
+                    <tr>
+                        <td>ORDINUL PREȘEDINTELUI ANRE nr. 59 din 02 august 2013 - pentru aprobarea <a href="https://legislatie.just.ro/Public/DetaliiDocumentAfis/297330" target="_blank" class="contact-link">Regulamentului</a> privind racordarea utilizatorilor la rețelele electrice de interes public. (Modificat prin Ordinul 63/2014; Ordinul 111/2018; Ordinul 15/2019; Ordinul 22/2020; Ordinul 68/2020; Ordinul 60/2020; Ordinul 16/2021; Ordinul 45/2021; Ordinul 81/2022; Ordinul 133/2022; Ordinul 4/2023)</td>
+                        <td><a href="https://legislatie.just.ro/Public/DetaliiDocument/150711" target="_blank" class="contact-link">vizualizare document</a></td>
+                    </tr>
+                    <tr>
+                        <td>ORDINUL PREȘEDINTELUI ANRE nr. 165 din 16 septembrie 2020 - pentru modificarea și completarea unor ordine ale președintelui Autorității Naționale de Reglementare în Domeniul Energiei din domeniul promovării energiei electrice din surse regenerabile de energie</td>
+                        <td><a href="https://legislatie.just.ro/Public/DetaliiDocument/230504" target="_blank" class="contact-link">vizualizare document</a></td>
+                    </tr>
+                    <tr>
+                        <td>ORDINUL PREȘEDINTELUI ANRE nr. 132 din iunie 2020 - privind modificarea și completarea Normei tehnice Condiții tehnice de racordare la rețelele electrice de interes public pentru prosumatorii cu injecție de putere activă în rețea, aprobate prin Ordinul Președintelui ANRE nr. 228/2018</td>
+                        <td><a href="https://legislatie.just.ro/Public/DetaliiDocument/227438" target="_blank" class="contact-link">vizualizare document</a></td>
+                    </tr>
+                    <tr>
+                        <td>ORDINUL PREȘEDINTELUI ANRE nr. 77 din 13 mai 2020 - privind modificarea și completarea Ordinului Președintelui ANRE nr. 226/2018 pentru aprobarea regulilor de comercializare a energiei electrice produse în centrale electrice din surse regenerabile cu putere electrică instalată de cel mult 27 kW aparținând prosumatorilor</td>
+                        <td><a href="https://legislatie.just.ro/Public/DetaliiDocument/225900" target="_blank" class="contact-link">vizualizare document</a></td>
+                    </tr>
+                    <tr>
+                        <td>ORDINUL PREȘEDINTELUI ANRE nr. 194 din 01 octombrie 2019 - pentru modificarea unor ordine ale președintelui Autorității Naționale de Reglementare în Domeniul Energiei referitoare la comercializarea energiei electrice produse în centrale electrice din surse regenerabile cu putere electrică instalată de cel mult 27 kW aparținând prosumatorilor</td>
+                        <td><a href="https://legislatie.just.ro/Public/DetaliiDocument/218661" target="_blank" class="contact-link">vizualizare document</a></td>
+                    </tr>
+                    <tr>
+                        <td>Comunicat Ministerul Mediului - validare instalatori sisteme fotovoltaice</td>
+                        <td><a href="https://anre.ro/wp-content/uploads/2023/03/Comunicat_validare_instalatori_sisteme_fotovoltaice.pdf" target="_blank" class="contact-link">vizualizare document</a></td>
+                    </tr>
+                    <tr>
+                        <td>ORDINUL PREȘEDINTELUI ANRE nr. 226 din 28 decembrie 2018 - pentru aprobarea regulilor de comercializare a energiei electrice produse în centrale electrice din surse regenerabile cu putere electrică instalată de cel mult 27 kW aparținând prosumatorilor, cu modificările și completările ulterioare (Modificat prin Ordinul 194/2019; Ordinul 77/2020: Abrogat de Ordinul 50/2021)</td>
+                        <td><a href="https://legislatie.just.ro/Public/DetaliiDocument/209495" target="_blank" class="contact-link">vizualizare document</a></td>
+                    </tr>
+                    <tr>
+                        <td>ORDINUL PREȘEDINTELUI ANRE nr. 227 din 28 decembrie 2018 - pentru aprobarea Contractului-cadru de vânzare-cumpărare a energiei electrice produse de prosumatorii care dețin centrale electrice de producere a energiei electrice din surse regenerabile cu puterea instalată de cel mult 27 kW pe loc de consum și pentru modificarea unor reglementări din sectorul energiei electrice, cu modificările și completările ulterioare (Modificat prin Ordinul 25/2021)</td>
+                        <td><a href="https://legislatie.just.ro/Public/DetaliiDocument/209498" target="_blank" class="contact-link">vizualizare document</a></td>
+                    </tr>
+                    <tr>
+                        <td>ORDINUL PREȘEDINTELUI ANRE nr. 228 din 28 decembrie 2018 - pentru aprobarea <a href="https://legislatie.just.ro/Public/DetaliiDocumentAfis/227373" target="_blank" class="contact-link">Normei tehnice</a> „Condiții tehnice de racordare la rețelele electrice de interes public pentru prosumatorii cu injecție de putere activă în rețea”</td>
+                        <td><a href="https://legislatie.just.ro/Public/DetaliiDocument/209499" target="_blank" class="contact-link">vizualizare document</a></td>
+                    </tr>
+                    <tr>
+                        <td>ORDINUL PREȘEDINTELUI ANRE nr. 18 din 02 martie 2022 - pentru aprobarea Procedurii privind racordarea la rețelele electrice de interes public de joasă tensiune a locurilor de consum aparținând utilizatorilor clienți casnici (Abrogă Ordinul 17/2021; Modificat prin Ordinul 133/2022, Ordinul 4/2023)</td>
+                        <td><a href="https://legislatie.just.ro/Public/DetaliiDocument/252416" target="_blank" class="contact-link">vizualizare document</a></td>
+                    </tr>
+                    <tr>
+                        <td>ORDINUL PREȘEDINTELUI ANRE nr. 51 din 17 aprilie 2019 - privind aprobarea Procedurii de notificare pentru racordarea unităților generatoare și de verificare a conformității unităților generatoare cu cerințele tehnice privind racordarea unităților generatoare la rețelele electrice de interes public (Modifică Ordinele 30/2013 și 74/2013)</td>
+                        <td><a href="https://legislatie.just.ro/Public/DetaliiDocument/213253" target="_blank" class="contact-link">vizualizare document</a></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Reguli-cheie</h3>
+            <ul class="prosumator-list">
+                <li>Puterea instalată: <strong>până la 400 kW</strong> (pentru anumite categorii).</li>
+                <li>Prosumatorii <strong>nu plătesc accize</strong> pentru energia produsă și consumată propriu.</li>
+                <li>Surplusul este compensat prin:</li>
+            </ul>
+            <ul class="prosumator-sublist" style="margin-top:-8px;">
+                <li><strong>compensare cantitativă</strong> (kWh–kWh) sau</li>
+                <li><strong>compensare financiară</strong>, în funcție de contract.</li>
+            </ul>
+
+            <h3>Avantajele prosumatorilor</h3>
+            <p style="color:#666; line-height:1.7;"><strong>Beneficii de mediu</strong></p>
+            <ul class="prosumator-list">
+                <li>reducerea emisiilor de CO₂;</li>
+                <li>sprijinirea tranziției energetice;</li>
+                <li>utilizarea energiei curate și locale.</li>
+            </ul>
+            <p style="color:#666; line-height:1.7;"><strong>Beneficii economice</strong></p>
+            <ul class="prosumator-list">
+                <li>facturi mai mici la energie;</li>
+                <li>protecție față de volatilitatea prețurilor;</li>
+                <li>amortizarea investiției în ~5–7 ani (în medie).</li>
+            </ul>
+            <p style="color:#666; line-height:1.7;"><strong>Beneficii sistemice</strong></p>
+            <ul class="prosumator-list">
+                <li>reducerea pierderilor din rețea;</li>
+                <li>creșterea rezilienței energetice locale;</li>
+                <li>descentralizarea producției de energie.</li>
+            </ul>
+
+            <h3>Provocări și limitări</h3>
+            <ul class="prosumator-list">
+                <li>capacitatea limitată a rețelelor de distribuție;</li>
+                <li>proceduri administrative încă birocratice;</li>
+                <li>lipsa stocării (bateriile sunt încă costisitoare);</li>
+                <li>necesitatea unor contoare inteligente funcționale.</li>
+            </ul>
+        </div>
+
+        <!-- Anunturi RePowerEU C16 Section -->
+        <div id="anunturi-repowereu-c16" class="section">
+            <h2>📢 Anunțuri - RePowerEU - C16</h2>
+            <p style="margin-bottom: 15px; color: #666; font-size: 1.05rem;">
+                Secțiune în curs de actualizare.
+            </p>
+
+            <div class="card">
+                <h3>Anunțuri privind evaluarea dosarelor</h3>
+                <ul class="services-list">
+                    <li>
+                        PNRR: Listele proiectelor acceptate la finanțare și pe lista de rezervă în urma soluționării contestațiilor în cadrul
+                        apelului de proiecte RePowerEU/I4/1.A, aferent Investiţiei 4 – Schema de granturi sub formă de bonuri valorice pentru
+                        accelerarea utilizării din surse regenerabile de către gospodării, Componenta16. RePowerEU
+                        <br>
+                        <a class="contact-link" href="https://mfe.gov.ro/pnrr-listele-proiectelor-acceptate-la-finantare-si-pe-lista-de-rezerva-in-urma-solutionarii-contestatiilor-in-cadrul-apelului-de-proiecte-repowereu-i4-1-a-aferent-investitiei-4-schema-de-granturi/" target="_blank">
+                            link
+                        </a>
+                    </li>
+                    <li>
+                        PNRR: Lista proiectelor suplimentare admise la finanțare, în cadrul apelului de proiecte PNRR/2024/C16 RePowerEU /i4/1.b –
+                        Schema de granturi sub formă de bonuri valorice pentru accelerarea utilizării energiei din surse regenerabile de către gospodării
+                        <br>
+                        <a class="contact-link" href="https://mfe.gov.ro/pnrr-lista-proiectelor-suplimentare-admise-la-finantare-in-cadrul-apelului-de-proiecte-pnrr-2024-c16-repowereu-i4-1-b-schema-de-granturi-sub-forma-de-bonuri-valorice-pentru-accelerarea-utilizarii/" target="_blank">
+                            link
+                        </a>
+                    </li>
+                    <li>
+                        PNRR: Listele proiectelor suplimentare admise la finanțare și admise pe lista de rezervă în cadrul apelului de proiecte
+                        PNRR / 2024 / C16 RePowerEU / I4 / 1.A
+                        <br>
+                        <a class="contact-link" href="https://mfe.gov.ro/pnrr-listele-proiectelor-suplimentare-admise-la-finantare-si-admise-pe-lista-de-rezerva-in-cadrul-apelului-de-proiecte-pnrr-2024-c16-repowereu-i4-1-a/" target="_blank">
+                            link
+                        </a>
+                    </li>
+                    <li>
+                        PNRR: Listele proiectelor admise la finanțare, admise pe lista de rezervă și a proiectelor respinse în cadrul apelului
+                        Schema de granturi sub formă de bonuri valorice pentru accelerarea utilizării energiei din surse regenerabile de către
+                        gospodării, Investiția 4
+                        <br>
+                        <a class="contact-link" href="https://mfe.gov.ro/pnrr-listele-proiectelor-admise-la-finantare-admise-pe-lista-de-rezerva-si-a-proiectelor-respinse-in-cadrul-apelului-schema-de-granturi-sub-forma-de-bonuri-valorice-pentru-accelerarea-utilizarii-ene/" target="_blank">
+                            link
+                        </a>
+                    </li>
+                    <li>
+                        Listele proiectelor acceptate la finanțare și respinse în urma încheierii etapei de evaluare privind apelul de proiecte
+                        aferent Investiţiei 7 – Schema de granturi sub formă de bonuri valorice pentru îmbunătățirea eficienței energetice a gospodăriilor
+                        <br>
+                        <a class="contact-link" href="https://mfe.gov.ro/pnrr-listele-proiectelor-acceptate-la-finantare-si-respinse-in-urma-incheierii-etapei-de-evaluare-privind-apelul-de-proiecte-aferent-investitiei-7-schema-de-granturi-sub-forma-de-bonuri-valorice-pe/" target="_blank">
+                            link
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>ANUNȚ IMPORTANT PENTRU OPERATORII ECONOMICI</h3>
+                <p style="color:#666; line-height:1.7;">
+                    Urmare a Ordinului MIPE nr. 269/13.02.2025 referitor la investiția 4 și a Ordinului MIPE nr. 270/13.02.2025 referitor la
+                    investiția 7, s-a procedat la modificarea calendarului apelurilor, respectiv la prelungirea perioadei de depunere a proiectelor.
+                </p>
+                <p style="color:#666; line-height:1.7;">
+                    Dată și oră începere depunere de proiecte în platforma PNRR: 16.12.2024, ora 10:00<br>
+                    Dată și oră închidere apel: <strong>depunere dosare la GUEE</strong> – <strong>03.03.2025, ora 17:00</strong><br>
+                    Data și ora închidere apel în platforma PNRR: 03.04.2025, ora 17:00
+                </p>
+                <p style="color:#666; line-height:1.7;">
+                    <strong>Atenție!</strong> GUEE va proceda la finalizarea verificării dosarelor cu minim 3 zile înainte de data închiderii apelului
+                    în platforma PNRR, respectiv până la data de 31.03.2025.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>În atenția operatorilor economici validați</h3>
+                <p style="color:#666; line-height:1.7;">
+                    Data și ora pentru închiderea sesiunii de depunere a cererilor de finanțare în platforma PNRR este
+                    <strong>17.02.2025, ora 17:00</strong>. Vă recomandăm să depuneți dosarele beneficiarilor finali în timp util.
+                </p>
+                <p style="color:#666; line-height:1.7;">
+                    Direcția Generală Dezvoltare Regională, Inovare și Societațe Digitalizată publică listele finale ale operatorilor economici
+                    admiși și respinși pentru Investiția 4 și Investiția 7, RePowerEU:
+                    <a class="contact-link" href="https://mfe.gov.ro/pnrr-listele-finale-ale-operatorilor-economici-admisi-si-respinsi-in-urma-incheierii-etapei-de-inrolare-si-a-etapei-de-solutionare-a-contestatiilor-pentru-apelurile-de-proiecte-aferente-investit/" target="_blank">link</a>
+                </p>
+                <p style="color:#666; line-height:1.7;">
+                    <strong>Actualizare – 22 ianuarie:</strong><br>
+                    Lista finală a operatorilor economici admiși:
+                    <a class="contact-link" href="https://mfe.gov.ro/wp-content/uploads/2025/01/80e753fb31fb683512c8c544638c96f3.pdf" target="_blank">aici</a><br>
+                    Lista finală a operatorilor economici respinși:
+                    <a class="contact-link" href="https://mfe.gov.ro/wp-content/uploads/2025/01/960afd1d5f727bbb7820ee4ac2b1e89f.pdf" target="_blank">aici</a>
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Noutăți privind procesul de depunere a dosarelor</h3>
+                <p style="color:#666; line-height:1.7;">
+                    Dosarele beneficiarilor finali pot fi depuse și electronic prin ePortal:
+                    <a class="contact-link" href="https://eportal.icc.ro./" target="_blank">https://eportal.icc.ro./</a>
+                </p>
+                <p style="color:#666; line-height:1.7;">
+                    Depunerea se face distinct pe cele 2 componente (Componenta C16, I4, Etapa I – Componenta A și Componenta C16, I7, Axa 1)
+                    și individual, pentru fiecare beneficiar în parte. Dosarul se atașează în format pdf, denumit cu numele și prenumele beneficiarului
+                    final, dimensiune max. 10 MB.
+                </p>
+                <p style="color:#666; line-height:1.7;">
+                    Pentru depunerea în format fizic, se atașează și dosarele beneficiarilor finali în format electronic, scanate individual, care pot
+                    fi transmise GUEE pe cd/stick sau pe e-mail la adresa <a class="contact-link" href="mailto:guee@icc.ro">guee@icc.ro</a>.
+                </p>
+                <p style="color:#666; line-height:1.7;">
+                    Modele adrese de depunere:
+                    <a class="contact-link" href="https://www.icc.ro/wp-content/uploads/2024/12/AdresaI4EICA.docx" target="_blank">Adresa – depunere dosar Beneficiar final Investitia 4 Etapa I Componenta A</a><br>
+                    <a class="contact-link" href="https://www.icc.ro/wp-content/uploads/2024/12/AdresaI7Axa1.docx" target="_blank">Adresa – depunere dosar Beneficiar final Investitia 7 Axa 1</a>
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Instrucțiuni pentru operatorii economici validați</h3>
+                <p style="color:#666; line-height:1.7;">
+                    Dosarele beneficiarilor finali (persoane vulnerabile) se depun la Ghișeul unic al Consiliului Județean Iași sau se transmit
+                    la adresa de e-mail <a class="contact-link" href="mailto:ghiseu.unic@icc.ro">ghiseu.unic@icc.ro</a>, conform Ordinului comun
+                    MDLPA/MIPE nr. 4041/6382 din 25 noiembrie 2024.
+                </p>
+                <ul class="services-list">
+                    <li>Dosarele pot fi transmise fizic sau în format electronic, însoțite de adresă de înaintare cu datele operatorului.</li>
+                    <li>Pentru mai multe dosare, adresa de înaintare va include un tabel centralizator (ideal în format editabil).</li>
+                    <li>Dosarele electronice sunt organizate separat pe beneficiar pentru verificare facilă.</li>
+                    <li>Dimensiunea maximă a documentelor în e-mail este 10 MB; se recomandă arhivarea sau transmiterea prin link.</li>
+                </ul>
+                <p style="color:#666; line-height:1.7;">
+                    Lista operatorilor economici validați pentru RePowerEU (I4 și I7):
+                    <a class="contact-link" href="https://mfe.gov.ro/repowereu-lista-operatorilor-economici-validati-in-etapa-de-inrolare-in-cadrul-apelurilor-de-proiecte-aferente-investitiei-4-schema-de-granturi-sub-forma-de-bonuri-valorice-pentru-accelerarea-uti/" target="_blank">link</a>
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Q&amp;A</h3>
+                <p style="color:#666; line-height:1.7;"><strong>Întrebare 1:</strong> Beneficiarul programului este sub tutelă. Se emite aviz favorabil sau se respinge?</p>
+                <p style="color:#666; line-height:1.7;"><strong>Răspuns 1:</strong> Aviz favorabil dacă tutorele are autorizația de a semna și sunt respectate procedurile legale.</p>
+                <p style="color:#666; line-height:1.7;"><strong>Întrebare 2:</strong> Contract comercial cu tutorele unei persoane minore vulnerabile care nu îndeplinește condițiile.</p>
+                <p style="color:#666; line-height:1.7;"><strong>Răspuns 2:</strong> Nu sunt îndeplinite criteriile de eligibilitate.</p>
+                <p style="color:#666; line-height:1.7;"><strong>Întrebare 3:</strong> Drept de habitație/uzufruct viager notat în cartea funciară.</p>
+                <p style="color:#666; line-height:1.7;"><strong>Răspuns 3:</strong> Nu sunt eligibili titularii cu sarcini/interdicții în cartea funciară.</p>
+                <p style="color:#666; line-height:1.7;"><strong>Întrebare 4:</strong> Coproprietate cu succesiune nedezbătută.</p>
+                <p style="color:#666; line-height:1.7;"><strong>Răspuns 4:</strong> Nu este îndeplinit criteriul de eligibilitate.</p>
+            </div>
+
+        </div>
+
+        <!-- Legislatie Nationala Section -->
+        <div id="legislatie-nationala" class="section">
+            <h2>⚖️ Legislație Națională</h2>
+            <p style="margin-bottom: 25px; color: #666; font-size: 1.05rem;">
+                Acte normative relevante pentru eficiența energetică și funcționarea GUEE.
+            </p>
+
+            <div class="legislation-group">
+                <h3>I. Legislație națională</h3>
+                <ul class="legislation-list">
+                    <li>
+                        <strong>ORDONANȚA DE URGENȚĂ nr. 92 din 28 iunie 2024</strong>
+                        <p>privind înființarea rețelei naționale de ghișee unice de eficiență energetică</p>
+                        <a href="https://legislatie.just.ro/Public/DetaliiDocument/284700" target="_blank" class="contact-link">
+                            vizualizare act normativ
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="legislation-group">
+                <h3>I.1 Legi</h3>
+                <ul class="legislation-list">
+                    <li>
+                        <strong>LEGEA nr. 372 din 13 decembrie 2005</strong>
+                        <p>privind performanța energetică a clădirilor republicată, cu modificările și completările ulterioare</p>
+                        <a href="https://legislatie.just.ro/Public/DetaliiDocument/66970" target="_blank" class="contact-link">
+                            vizualizare act normativ
+                        </a>
+                    </li>
+                    <li>
+                        <strong>LEGEA nr. 121 din 18/07/2014</strong>
+                        <p>privind eficiența energetică, cu modificările și completările ulterioare</p>
+                        <a href="https://legislatie.just.ro/Public/DetaliiDocument/160331" target="_blank" class="contact-link">
+                            vizualizare act normativ
+                        </a>
+                    </li>
+                    <li>
+                        <strong>LEGEA nr. 123 din 10 iulie 2012</strong>
+                        <p>a energiei electrice și a gazelor naturale, cu modificările și completările ulterioare</p>
+                        <a href="https://legislatie.just.ro/Public/DetaliiDocument/139677" target="_blank" class="contact-link">
+                            vizualizare act normativ
+                        </a>
+                    </li>
+                    <li>
+                        <strong>LEGEA nr. 226 din 16 septembrie 2021</strong>
+                        <p>privind stabilirea măsurilor de protecție socială pentru consumatorul vulnerabil de energie,
+                            cu modificările și completările ulterioare</p>
+                        <a href="https://legislatie.just.ro/Public/DetaliiDocument/246430" target="_blank" class="contact-link">
+                            vizualizare act normativ
+                        </a>
+                    </li>
+                    <li>
+                        <strong>LEGEA nr. 50/1991</strong>
+                        <p>privind autorizarea executării lucrărilor de construcții, cu modificările și completările ulterioare</p>
+                        <a href="https://legislatie.just.ro/Public/DetaliiDocument/55794" target="_blank" class="contact-link">
+                            vizualizare act normativ
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="legislation-group">
+                <h3>I.2 Ordonanțe de urgență</h3>
+                <ul class="legislation-list">
+                    <li>
+                        <strong>ORDONANȚĂ DE URGENȚĂ A GUVERNULUI nr. 119 din 14 decembrie 2023</strong>
+                        <p>privind reglementarea standardelor pentru instrumentele financiare ecologice dedicate sprijinirii
+                            măsurilor de îmbunătățire a eficienței energetice în industrie, precum și pentru modificarea
+                            Legii nr. 121/2014 privind eficiența energetică, cu modificările și completările ulterioare</p>
+                        <a href="https://legislatie.just.ro/Public/DetaliiDocument/277435" target="_blank" class="contact-link">
+                            vizualizare act normativ
+                        </a>
+                    </li>
+                    <li>
+                        <strong>ORDONANȚĂ DE URGENȚĂ A GUVERNULUI nr. 18 din 4 martie 2009</strong>
+                        <p>privind creșterea performanței energetice a blocurilor de locuințe,
+                            cu modificările și completările ulterioare</p>
+                        <a href="https://legislatie.just.ro/Public/DetaliiDocument/103284" target="_blank" class="contact-link">
+                            vizualizare act normativ
+                        </a>
+                    </li>
+                    <li>
+                        <strong>ORDONANȚĂ DE URGENȚĂ A GUVERNULUI nr. 163 din 29 noiembrie 2022</strong>
+                        <p>pentru completarea cadrului legal de promovare a utilizării energiei din surse regenerabile,
+                            precum și pentru modificarea și completarea unor acte normative, cu modificările și completările ulterioare</p>
+                        <a href="https://legislatie.just.ro/Public/DetaliiDocument/262191" target="_blank" class="contact-link">
+                            vizualizare act normativ
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="legislation-group">
+                <h3>I.3 Ordine</h3>
+                <ul class="legislation-list">
+                    <li>
+                        <strong>ORDINUL PREȘEDINTELUI AUTORITĂȚII NAȚIONALE DE REGLEMENTARE ÎN DOMENIUL ENERGIEI nr. 15 din 23 februarie 2022</strong>
+                        <p>pentru aprobarea <a href="https://legislatie.just.ro/Public/DetaliiDocumentAfis/256364" target="_blank" class="contact-link">Metodologiei</a>
+                            de stabilire a regulilor de comercializare a energiei electrice produse în centrale electrice din surse regenerabile
+                            cu putere electrică instalată de cel mult 400 kW pe loc de consum aparținând prosumatorilor,
+                            cu modificările și completările ulterioare</p>
+                        <a href="https://legislatie.just.ro/Public/DetaliiDocument/252373" target="_blank" class="contact-link">
+                            vizualizare act normativ
+                        </a>
+                    </li>
+                    <li>
+                        <strong>ORDINUL MINISTRULUI DEZVOLTĂRII, LUCRĂRILOR PUBLICE ȘI ADMINISTRAȚIEI nr. 625 din 5 aprilie 2023</strong>
+                        <p>pentru aprobarea <a href="https://legislatie.just.ro/Public/DetaliiDocumentAfis/267102" target="_blank" class="contact-link">Normelor metodologice</a>
+                            de aplicare a <a href="https://legislatie.just.ro/Public/DetaliiDocumentAfis/262574" target="_blank" class="contact-link">O.U.G. nr. 18/2009</a>
+                            privind creșterea performanței energetice a blocurilor de locuințe</p>
+                        <a href="https://legislatie.just.ro/Public/DetaliiDocument/267101" target="_blank" class="contact-link">
+                            vizualizare act normativ
+                        </a>
+                    </li>
+                    <li>
+                        <strong>ORDINUL MINISTRULUI DEZVOLTĂRII, LUCRĂRILOR PUBLICE ȘI ADMINISTRAȚIEI nr. 16 din 5 ianuarie 2023</strong>
+                        <p>pentru aprobarea „Metodologiei de calcul al performanței energetice a clădirilor,
+                            indicativ Mc 001-2022”</p>
+                        <a href="https://legislatie.just.ro/Public/DetaliiDocument/263984" target="_blank" class="contact-link">
+                            vizualizare act normativ
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Program Section -->
+        <div id="program" class="section">
+            <h2>🕐 Program de Lucru</h2>
+
+            <table class="schedule-table">
+                <thead>
+                    <tr>
+                        <th>Ziua</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Luni</strong></td>
+                        <td>07:30</td>
+                        <td>16:00</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Marți</strong></td>
+                        <td>07:30</td>
+                        <td>16:00</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Miercuri</strong></td>
+                        <td>07:30</td>
+                        <td>16:00</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Joi</strong></td>
+                        <td>07:30</td>
+                        <td>16:00</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Vineri</strong></td>
+                        <td>07:30</td>
+                        <td>13:30</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sâmbătă - Duminică</strong></td>
+                        <td colspan="2" style="color: #f44336;">Închis</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Contact Section -->
+        <div id="contact" class="section">
+            <h2>📞 Contact</h2>
+
+            <div class="info-grid">
+                <div class="info-box">
+                <div class="icon">📧</div>
+                <h3>Email</h3>
+                <p>
+                    <a href="mailto:ghiseu.unic@icc.ro" class="contact-link">ghiseu.unic@icc.ro</a><br>
+                    <a href="mailto:guee@icc.ro" class="contact-link">guee@icc.ro</a>
+                </p>
+            </div>
+                <div class="info-box">
+                    <div class="icon">📍</div>
+                    <h3>Adresa</h3>
+                    <p>Calea Chișinăului nr. 23<br>Cod poștal 700265, Iași</p>
+                </div>
+                <div class="info-box">
+                    <div class="icon">🌐</div>
+                    <h3>Portal Online</h3>
+                    <p><a href="https://eportal.icc.ro" target="_blank" class="contact-link">eportal.icc.ro</a></p>
+                </div>
+                <div class="info-box">
+                    <div class="icon">🏛️</div>
+                    <h3>Instituția</h3>
+                    <p>Consiliul Județean Iași</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2712.8!2d27.6!3d47.15!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zQ2FsZWEgQ2hpyJlpbsSDdWx1aSAyMywgSWHImWk!5e0!3m2!1sen!2sro!4v1"
+                    width="100%"
+                    height="300"
+                    style="border:0; border-radius: 15px;"
+                    allowfullscreen=""
+                    loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2024 Ghișeu Unic de Eficiență Energetică - Consiliul Județean Iași</p>
+        <p style="margin-top: 10px;">
+            <a href="https://www.icc.ro" target="_blank">www.icc.ro</a>
+        </p>
+    </div>
+
+    <script>
+        function activateSection(sectionId) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => section.classList.remove('active'));
+
+            const target = document.getElementById(sectionId) || document.getElementById('programe');
+            if (!target) return;
+
+            target.classList.add('active');
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function showSection(sectionId) {
+            if (sectionId) {
+                location.hash = sectionId;
+                return;
+            }
+            const hash = location.hash.replace('#', '');
+            activateSection(hash || 'programe');
+        }
+
+        window.addEventListener('hashchange', () => showSection());
+        window.addEventListener('DOMContentLoaded', () => showSection());
+    </script>
+</body>
+</html>
