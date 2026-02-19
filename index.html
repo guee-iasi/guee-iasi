@@ -395,6 +395,44 @@
             font-size: 1.2rem;
         }
 
+        .access-highlight {
+            margin-bottom: 20px;
+            padding: 18px 20px 20px;
+            background: linear-gradient(145deg, #1e5aa8, #1e3c72);
+            color: #ffffff;
+            border-radius: 12px;
+            line-height: 1.7;
+            font-weight: 700;
+            box-shadow: 0 8px 20px rgba(30, 60, 114, 0.25);
+            border: 2px solid #8dc6ff;
+        }
+
+        .access-highlight-title {
+            display: inline-block;
+            margin-bottom: 8px;
+            padding: 6px 10px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            font-size: 1rem;
+            font-weight: 800;
+            letter-spacing: 0.4px;
+        }
+
+        .access-highlight a {
+            color: #ffffff;
+            text-decoration: underline;
+            font-weight: 800;
+        }
+
+        .access-highlight a:hover {
+            color: #d6e9ff;
+        }
+
+        .negative-list li::before {
+            content: "✕";
+            color: #f44336;
+        }
+
         .legislation-group {
             margin-bottom: 25px;
         }
@@ -642,6 +680,11 @@
         <!-- Servicii Section -->
         <div id="servicii" class="section">
             <h2>🛠️ Servicii Oferite</h2>
+            <p class="access-highlight">
+                <span class="access-highlight-title">👉 DE REȚINUT</span><br>
+                Accesul la Ghișeul Unic de Eficiență Energetică Iași se face prin intrarea principală a instituției, cu înregistrare în registrul de vizitatori la paznicul de la intrarea principală. Este necesară prezentarea unui act de identitate. Menționăm că nu este nevoie de programare prealabilă! Programul de lucru al Ghișeului este cel afișat în secțiunea
+                <a class="contact-link" href="#program">Program</a>.
+            </p>
             <h3 style="color:#1e3c72; margin: 10px 0 12px;">Scopul serviciului</h3>
             <p style="margin-bottom: 18px; color:#444;">
                 Furnizarea de informare, consiliere și sprijin tehnic privind:
@@ -665,8 +708,8 @@
                 <li>Informare privind mecanismele de sprijin pentru persoane vulnerabile.</li>
             </ul>
 
-            <h3 style="color:#1e3c72; margin: 28px 0 12px;">Ce NU oferă OSS (pentru evitarea confuziilor)</h3>
-            <ul class="services-list">
+            <h3 style="color:#1e3c72; margin: 28px 0 12px;">Ce NU oferă OSS</h3>
+            <ul class="services-list negative-list">
                 <li>Nu realizează audit energetic;</li>
                 <li>Nu întocmește proiecte tehnice;</li>
                 <li>Nu depune în numele solicitantului cereri de finanțare;</li>
