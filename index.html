@@ -28,10 +28,14 @@
         }
 
         .header-content {
+            position: relative;
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 8px;
+            width: min(1180px, 100%);
+            margin: 0 auto;
+            min-height: 150px;
         }
 
         .header::before {
@@ -49,11 +53,15 @@
 
         .header h1 {
             color: #ffffff;
-            font-size: 2rem;
-            margin-bottom: 10px;
+            font-size: 2.05rem;
+            font-weight: 700;
+            letter-spacing: 0.005em;
+            align-self: flex-start;
+            margin: 8px 0 8px 290px;
             display: inline-flex;
             align-items: center;
             gap: 12px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
         }
 
         .title-icon {
@@ -80,25 +88,81 @@
             margin-top: 0;
         }
 
+        .header-tagline {
+            font-size: 0.98rem;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+            text-transform: none;
+            color: #f2f6ff;
+        }
+
+        .header-subtitle {
+            position: absolute;
+            top: 8px;
+            left: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 14px;
+            text-align: left;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        .header-subtitle-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+            gap: 2px;
+        }
+
         .header-logo {
-            height: 34px;
+            height: 82px;
             width: auto;
-            border-radius: 4px;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 2px 6px;
+            border-radius: 0;
+            background: transparent;
+            padding: 0;
+            mix-blend-mode: multiply;
         }
 
         .banner-wrap {
             text-align: center;
-            margin: 0 0 16px;
+            margin: 2px 0 0;
         }
 
-        .banner-image {
-            width: 50%;
-            max-width: 980px;
+        .banner-logos {
+            display: inline-flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 14px;
+            flex-wrap: wrap;
+            padding: 6px 10px;
+            border-radius: 10px;
+            background: linear-gradient(160deg, rgba(238, 244, 255, 0.94), rgba(222, 233, 252, 0.9));
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 12px rgba(7, 27, 66, 0.18);
+        }
+
+        .banner-logo {
             height: auto;
-            border-radius: 12px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            max-width: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.22));
+        }
+
+        .banner-logo.eu {
+            width: min(240px, 33vw);
+        }
+
+        .banner-logo.gov {
+            width: min(74px, 12vw);
+        }
+
+        .banner-logo.pnrr {
+            width: min(270px, 36vw);
         }
 
         .container {
@@ -111,49 +175,97 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 15px;
-            margin-bottom: 30px;
+            gap: 12px;
+            margin: 0 0 32px;
+        }
+
+        /* Variante butoane:
+           1) body.nav-style-institutional (implicit)
+           2) body.nav-style-glass
+           3) body.nav-style-minimal */
+        body.nav-style-institutional {
+            --nav-radius: 14px;
+            --nav-border: 1px solid rgba(255, 255, 255, 0.24);
+            --nav-overlay: linear-gradient(165deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0));
+            --nav-shadow: 0 8px 20px rgba(16, 39, 68, 0.22);
+            --nav-hover-shadow: 0 12px 26px rgba(16, 39, 68, 0.32);
+            --nav-active-shadow: 0 0 0 2px rgba(255, 255, 255, 0.8), 0 12px 28px rgba(16, 39, 68, 0.36);
+            --nav-active-filter: saturate(1.1);
+            --nav-hover-filter: saturate(1.08);
+        }
+
+        body.nav-style-glass {
+            --nav-radius: 18px;
+            --nav-border: 1px solid rgba(255, 255, 255, 0.42);
+            --nav-overlay: linear-gradient(165deg, rgba(255, 255, 255, 0.32), rgba(255, 255, 255, 0.08));
+            --nav-shadow: 0 10px 24px rgba(14, 30, 64, 0.28);
+            --nav-hover-shadow: 0 14px 30px rgba(14, 30, 64, 0.38);
+            --nav-active-shadow: 0 0 0 2px rgba(255, 255, 255, 0.95), 0 16px 34px rgba(14, 30, 64, 0.4);
+            --nav-active-filter: brightness(1.03) saturate(1.12);
+            --nav-hover-filter: brightness(1.03) saturate(1.08);
+        }
+
+        body.nav-style-minimal {
+            --nav-radius: 10px;
+            --nav-border: 1px solid rgba(255, 255, 255, 0.18);
+            --nav-overlay: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0));
+            --nav-shadow: 0 5px 14px rgba(14, 30, 64, 0.2);
+            --nav-hover-shadow: 0 8px 20px rgba(14, 30, 64, 0.28);
+            --nav-active-shadow: 0 0 0 2px rgba(255, 255, 255, 0.75), 0 10px 22px rgba(14, 30, 64, 0.3);
+            --nav-active-filter: saturate(1.05);
+            --nav-hover-filter: saturate(1.04);
         }
 
         .nav-btn {
-            background: linear-gradient(145deg, #4CAF50, #43A047);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 1rem;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            --btn-color: #2e7d32;
+            --btn-color-dark: #1b5e20;
+            color: #ffffff;
+            border: var(--nav-border);
+            padding: 13px 22px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 0.01em;
+            border-radius: var(--nav-radius);
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+            gap: 8px;
             text-align: center;
             justify-content: center;
+            min-height: 48px;
+            background:
+                var(--nav-overlay),
+                linear-gradient(165deg, var(--btn-color), var(--btn-color-dark));
+            box-shadow: var(--nav-shadow);
+            transition: transform 0.22s ease, box-shadow 0.22s ease, filter 0.22s ease, border-color 0.22s ease;
         }
 
         .nav-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 25px rgba(76, 175, 80, 0.4);
+            transform: translateY(-2px);
+            filter: var(--nav-hover-filter);
+            box-shadow: var(--nav-hover-shadow);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .nav-btn:focus-visible {
+            outline: 3px solid rgba(255, 255, 255, 0.9);
+            outline-offset: 2px;
+        }
+
+        .nav-btn.active {
+            transform: translateY(-1px);
+            box-shadow: var(--nav-active-shadow);
+            filter: var(--nav-active-filter);
         }
 
         .nav-btn.blue {
-            background: linear-gradient(145deg, #2196F3, #1565C0);
-            box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
-        }
-
-        .nav-btn.blue:hover {
-            box-shadow: 0 6px 25px rgba(33, 150, 243, 0.4);
+            --btn-color: #1976d2;
+            --btn-color-dark: #0d47a1;
         }
 
         .nav-btn.gray {
-            background: linear-gradient(145deg, #8E9AA0, #6F7C85);
-            box-shadow: 0 4px 15px rgba(142, 154, 160, 0.3);
-        }
-
-        .nav-btn.gray:hover {
-            box-shadow: 0 6px 25px rgba(142, 154, 160, 0.4);
+            --btn-color: #d84315;
+            --btn-color-dark: #bf360c;
         }
 
         .section {
@@ -472,17 +584,53 @@
         }
 
         @media (max-width: 768px) {
-            .banner-image {
-                width: 65%;
+            .banner-logos {
+                gap: 6px;
+                padding: 5px 6px;
+            }
+
+            .banner-logo.eu {
+                width: min(180px, 64vw);
+            }
+
+            .banner-logo.gov {
+                width: min(56px, 20vw);
+            }
+
+            .banner-logo.pnrr {
+                width: min(190px, 66vw);
             }
 
             .header h1 {
                 font-size: 1.5rem;
+                margin: 78px 0 8px 0;
+                align-self: center;
+            }
+
+            .header-tagline {
+                font-size: 0.86rem;
+            }
+
+            .header-subtitle {
+                top: 6px;
+                left: 6px;
+                gap: 10px;
+                font-size: 0.88rem;
+                letter-spacing: 0.03em;
+            }
+
+            .header-subtitle-text {
+                gap: 1px;
+            }
+
+            .header-logo {
+                height: 64px;
             }
 
             .nav-btn {
-                padding: 12px 20px;
-                font-size: 0.9rem;
+                padding: 12px 16px;
+                font-size: 0.88rem;
+                border-radius: var(--nav-radius);
             }
 
             .section {
@@ -575,7 +723,7 @@
         }
     </style>
 </head>
-<body>
+<body class="nav-style-institutional">
     <div class="header">
         <div class="header-content">
             <h1>
@@ -593,20 +741,28 @@
                 </svg>
                 Ghișeu Unic de Eficiență Energetică
             </h1>
-            <p style="color:#e9eef7; font-size:1rem; text-shadow:0 2px 6px rgba(0, 0, 0, 0.4);">
+            <p class="header-tagline">
                 🌳 Powering a Greener Tomorrow for Our Community
             </p>
+            <div class="banner-wrap">
+                <div class="banner-logos" aria-label="Parteneri instituționali">
+                    <img class="banner-logo eu" src="logos_hd_clean/logo UE_NextGEN_RGB.clean.png" alt="Finanțat de Uniunea Europeană NextGenerationEU">
+                    <img class="banner-logo gov" src="logos_hd_clean/logo Guv. RO_RGB.clean.png" alt="Guvernul României">
+                    <img class="banner-logo pnrr" src="logos_hd_clean/logo PNRR_RGB.clean.png" alt="Planul Național de Redresare și Reziliență">
+                </div>
+            </div>
             <p class="header-subtitle">
-                <img class="header-logo" src="https://www.icc.ro/wp-content/uploads/2023/10/logo-cj-iasi-01.png" alt="Consiliul Județean Iași">
-                Consiliul Județean Iași
+                <img class="header-logo" src="stema.png" alt="Consiliul Județean Iași">
+                <span class="header-subtitle-text">
+                    <span>Consiliul</span>
+                    <span>Județean</span>
+                    <span>Iași</span>
+                </span>
             </p>
         </div>
     </div>
 
     <div class="container">
-        <div class="banner-wrap">
-            <img class="banner-image" src="imagine pnrr.png" alt="PNRR">
-        </div>
         <div class="nav-buttons">
             <a class="nav-btn" href="#programe">
                 📋 Programe
@@ -1560,7 +1716,17 @@
     </div>
 
     <script>
-        function activateSection(sectionId) {
+        function setActiveNavButton(sectionId) {
+            const navButtons = document.querySelectorAll('.nav-btn');
+            navButtons.forEach(button => {
+                const targetId = (button.getAttribute('href') || '').replace('#', '');
+                const isActive = targetId === sectionId;
+                button.classList.toggle('active', isActive);
+                button.setAttribute('aria-current', isActive ? 'page' : 'false');
+            });
+        }
+
+        function activateSection(sectionId, shouldScroll = true) {
             const sections = document.querySelectorAll('.section');
             sections.forEach(section => section.classList.remove('active'));
 
@@ -1568,23 +1734,25 @@
             if (!target) return;
 
             target.classList.add('active');
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            setActiveNavButton(target.id);
+
+            if (shouldScroll) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         }
 
-        function showSection(sectionId) {
+        function showSection(sectionId, shouldScroll = true) {
             if (sectionId) {
                 location.hash = sectionId;
                 return;
             }
-            const hash = location.hash.replace('#', '');
 
-            if (hash) {
-                activateSection(hash);
-            }
+            const hash = location.hash.replace('#', '') || 'programe';
+            activateSection(hash, shouldScroll && Boolean(location.hash));
         }
 
-        window.addEventListener('hashchange', () => showSection());
-        window.addEventListener('DOMContentLoaded', () => showSection());
+        window.addEventListener('hashchange', () => showSection(undefined, true));
+        window.addEventListener('DOMContentLoaded', () => showSection(undefined, false));
     </script>
 </body>
 </html>
