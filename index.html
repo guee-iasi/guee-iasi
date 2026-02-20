@@ -584,21 +584,28 @@
         }
 
         @media (max-width: 768px) {
+            .banner-wrap {
+                margin-top: 6px;
+            }
+
             .banner-logos {
-                gap: 6px;
-                padding: 5px 6px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+                padding: 8px 10px;
             }
 
             .banner-logo.eu {
-                width: min(180px, 64vw);
+                width: min(250px, 88vw);
             }
 
             .banner-logo.gov {
-                width: min(56px, 20vw);
+                width: min(68px, 28vw);
             }
 
             .banner-logo.pnrr {
-                width: min(190px, 66vw);
+                width: min(260px, 92vw);
             }
 
             .header h1 {
