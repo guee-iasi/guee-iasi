@@ -642,6 +642,30 @@
                 border-radius: var(--nav-radius);
             }
 
+            /* Mobile-friendly layout for long links in Programe */
+            #programe .services-list li {
+                display: block;
+                position: relative;
+                padding: 14px 14px 14px 40px;
+                line-height: 1.45;
+            }
+
+            #programe .services-list li::before {
+                position: absolute;
+                left: 14px;
+                top: 14px;
+                margin: 0;
+            }
+
+            #programe .services-list .contact-link {
+                display: block;
+                margin-top: 8px;
+                font-size: 0.96rem;
+                line-height: 1.35;
+                overflow-wrap: anywhere;
+                word-break: break-word;
+            }
+
             .section {
                 padding: 20px;
             }
